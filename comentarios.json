@@ -1,0 +1,17 @@
+[
+  {
+    "nome": "Maria Silva",
+    "comentario": "A Brenda transformou completamente minha forma de cozinhar! As receitas são incríveis e as dicas fazem toda a diferença. Minha família adora os pratos que aprendi com ela!",
+    "avaliacao": 5
+  },
+  {
+    "nome": "João Santos",
+    "comentario": "Consultoria gastronômica excepcional! A Brenda me ajudou a organizar minha cozinha e criar um cardápio especial para meu evento. Todos os convidados elogiaram!",
+    "avaliacao": 5
+  },
+  {
+    "nome": "Ana Costa",
+    "comentario": "Produtos de qualidade excepcional e atendimento personalizado. A Brenda realmente entende do assunto e passa muita confiança. Super recomendo!",
+    "avaliacao": 5
+  }
+]
