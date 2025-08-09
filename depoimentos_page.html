@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depoimentos - Brenda Cozinha Gourmet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .depoimento {
+            background: #f8f9fa;
+            margin: 30px 0;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #ff6b6b;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .depoimento p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .cliente {
+            font-weight: bold;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .estrelas {
+            color: #ffa726;
+            font-size: 1.2em;
+        }
+        
+        .form-section {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 40px -40px -40px;
+            padding: 40px;
+            color: white;
+        }
+        
+        .form-section h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            background: rgba(255,255,255,0.9);
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .btn-submit {
+            background: #ff6b6b;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 30px auto 0;
+        }
+        
+        .btn-submit:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+        }
+        
+        .whatsapp-btn {
+            background: #25d366;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            margin: 20px auto;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #22c55e;
+            transform: translateY(-2px);
+        }
+        
+        .center {
+            text-align: center;
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .form-section {
+                margin: 20px -20px -20px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌟 Depoimentos</h1>
+            <p>O que nossos clientes dizem sobre a Brenda Cozinha Gourmet</p>
+        </div>
+        
+        <div class="content">
+            <div class="depoimento">
+                <p>"A Brenda transformou completamente minha forma de cozinhar! As receitas são incríveis e as dicas fazem toda a diferença. Minha família adora os pratos que aprendi com ela!"</p>
+                <div class="cliente">
+                    <span>Maria Silva</span>
+                    <div class="estrelas">⭐⭐⭐⭐⭐</div>
+                </div>
+            </div>
+            
+            <div class="depoimento">
+                <p>"Consultoria gastronômica excepcional! A Brenda me ajudou a organizar minha cozinha e criar um cardápio especial para meu evento. Todos os convidados elogiaram!"</p>
+                <div class="cliente">
+                    <span>João Santos</span>
+                    <div class="estrelas">⭐⭐⭐⭐⭐</div>
+                </div>
+            </div>
+            
+            <div class="depoimento">
+                <p>"Produtos de qualidade excepcional e atendimento personalizado. A Brenda realmente entende do assunto e passa muita confiança. Super recomendo!"</p>
+                <div class="cliente">
+                    <span>Ana Costa</span>
+                    <div class="estrelas">⭐⭐⭐⭐⭐</div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h3>✨ Deixe seu Depoimento</h3>
+                <p style="text-align: center; margin-bottom: 30px;">Sua opinião é muito importante para nós!</p>
+                
+                <form onsubmit="enviarDepoimento(event)">
+                    <div class="form-group">
+                        <label>Seu Nome:</label>
+                        <input type="text" id="nome" required placeholder="Como podemos te chamar?">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Seu Depoimento:</label>
+                        <textarea id="depoimento" required placeholder="Conte sobre sua experiência com a Brenda Cozinha Gourmet..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Avaliação:</label>
+                        <select id="avaliacao" style="width: 100%; padding: 12px; border: none; border-radius: 8px;">
+                            <option value="5">⭐⭐⭐⭐⭐ - Excelente</option>
+                            <option value="4">⭐⭐⭐⭐ - Muito Bom</option>
+                            <option value="3">⭐⭐⭐ - Bom</option>
+                            <option value="2">⭐⭐ - Regular</option>
+                            <option value="1">⭐ - Precisa Melhorar</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Enviar Depoimento ✨</button>
+                </form>
+                
+                <div class="center" style="margin-top: 30px;">
+                    <p>Ou envie via WhatsApp:</p>
+                    <a href="https://wa.me/5511999999999?text=Olá! Gostaria de deixar meu depoimento sobre os serviços da Brenda Cozinha Gourmet" class="whatsapp-btn" target="_blank">
+                        📱 Enviar pelo WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function enviarDepoimento(event) {
+            event.preventDefault();
+            
+            const nome = document.getElementById('nome').value;
+            const depoimento = document.getElementById('depoimento').value;
+            const avaliacao = document.getElementById('avaliacao').value;
+            
+            const mensagem = `Olá! Gostaria de deixar meu depoimento:
+
+Nome: ${nome}
+Avaliação: ${avaliacao} estrelas
+Depoimento: ${depoimento}`;
+            
+            const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(mensagem)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Limpar formulário
+            document.getElementById('nome').value = '';
+            document.getElementById('depoimento').value = '';
+            document.getElementById('avaliacao').value = '5';
+            
+            alert('Redirecionando para o WhatsApp! 😊');
+        }
+    </script>
+</body>
+</html>
