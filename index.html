@@ -38,19 +38,7 @@
         </div>
         
         <div class="content" id="listaDepoimentos">
-            <!-- Depoimentos fixos -->
-            <div class="depoimento">
-                <p>"A Brenda transformou completamente minha forma de cozinhar! As receitas são incríveis e as dicas fazem toda a diferença. Minha família adora os pratos que aprendi com ela!"</p>
-                <div class="cliente"><span>Maria Silva</span><div class="estrelas">⭐⭐⭐⭐⭐</div></div>
-            </div>
-            <div class="depoimento">
-                <p>"Consultoria gastronômica excepcional! A Brenda me ajudou a organizar minha cozinha e criar um cardápio especial para meu evento. Todos os convidados elogiaram!"</p>
-                <div class="cliente"><span>João Santos</span><div class="estrelas">⭐⭐⭐⭐⭐</div></div>
-            </div>
-            <div class="depoimento">
-                <p>"Produtos de qualidade excepcional e atendimento personalizado. A Brenda realmente entende do assunto e passa muita confiança. Super recomendo!"</p>
-                <div class="cliente"><span>Ana Costa</span><div class="estrelas">⭐⭐⭐⭐⭐</div></div>
-            </div>
+            <!-- Lista começa vazia -->
         </div>
         
         <div class="form-section">
@@ -89,20 +77,18 @@
     </div>
 
     <script>
-        // Função para exibir depoimentos salvos
         function exibirDepoimentos() {
             const lista = document.getElementById("listaDepoimentos");
             let depoimentos = JSON.parse(localStorage.getItem("depoimentos")) || [];
-            lista.querySelectorAll(".depoimento.dynamic").forEach(el => el.remove());
+            lista.innerHTML = "";
             depoimentos.forEach(dep => {
                 const div = document.createElement("div");
-                div.classList.add("depoimento", "dynamic");
+                div.classList.add("depoimento");
                 div.innerHTML = `<p>"${dep.mensagem}"</p><div class="cliente"><span>${dep.nome}</span><div class="estrelas">${"⭐".repeat(dep.avaliacao)}</div></div>`;
                 lista.appendChild(div);
             });
         }
 
-        // Salvar depoimento no site
         document.getElementById("btnSalvar").addEventListener("click", () => {
             const nome = document.getElementById("nome").value.trim();
             const mensagem = document.getElementById("depoimento").value.trim();
@@ -118,12 +104,10 @@
             localStorage.setItem("depoimentos", JSON.stringify(depoimentos));
 
             exibirDepoimentos();
-
             document.getElementById("formDepoimento").reset();
             alert("Depoimento registrado com sucesso! ✅");
         });
 
-        // Configurar botão WhatsApp
         document.getElementById("btnWhats").addEventListener("click", () => {
             const nome = document.getElementById("nome").value.trim();
             const mensagem = document.getElementById("depoimento").value.trim();
@@ -138,7 +122,6 @@
             document.getElementById("btnWhats").href = `https://wa.me/5519987053564?text=${texto}`;
         });
 
-        // Carregar depoimentos ao abrir
         document.addEventListener("DOMContentLoaded", exibirDepoimentos);
     </script>
 </body>
