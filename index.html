@@ -3,42 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Depoimentos</title>
+<title>Sistema de Depoimentos</title>
 <style>
+    * { box-sizing: border-box; }
+    
     body { 
-        font-family: Arial, sans-serif; 
-        max-width: 500px; 
-        margin: auto; 
-        padding: 10px; 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 20px;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         min-height: 100vh;
     }
     
     .container {
+        max-width: 800px;
+        margin: 0 auto;
         background: white;
         border-radius: 15px;
         padding: 30px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+    
+    .tabs {
+        display: flex;
+        border-bottom: 2px solid #eee;
+        margin-bottom: 30px;
+    }
+    
+    .tab {
+        padding: 15px 25px;
+        cursor: pointer;
+        border: none;
+        background: none;
+        font-size: 16px;
+        font-weight: bold;
+        color: #666;
+        border-bottom: 3px solid transparent;
+        transition: all 0.3s ease;
+    }
+    
+    .tab.active {
+        color: #667eea;
+        border-bottom-color: #667eea;
+    }
+    
+    .tab:hover {
+        color: #667eea;
+        background: #f8f9ff;
+    }
+    
+    .tab-content {
+        display: none;
+    }
+    
+    .tab-content.active {
+        display: block;
     }
     
     h2, h3 { 
         color: #333; 
-        text-align: center;
         margin-bottom: 20px;
     }
     
     .depoimento {
-        background: linear-gradient(145deg, #f0f8ff, #e6f3ff);
+        background: linear-gradient(145deg, #f8fafe, #f0f7ff);
         padding: 20px;
         margin: 15px 0;
         border-radius: 12px;
         border-left: 4px solid #4CAF50;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         transition: transform 0.2s ease;
+        position: relative;
     }
     
     .depoimento:hover {
         transform: translateY(-2px);
+    }
+    
+    .depoimento-admin {
+        border-left-color: #ff9800;
+        background: linear-gradient(145deg, #fff8f0, #fef7ef);
+    }
+    
+    .depoimento-admin .btn-excluir {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: #f44336;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.2s ease;
+    }
+    
+    .depoimento-admin .btn-excluir:hover {
+        background: #d32f2f;
+        transform: scale(1.1);
     }
     
     .avaliacao { 
@@ -60,6 +124,14 @@
         line-height: 1.6;
         font-style: italic;
         margin: 10px 0;
+        padding-right: 40px;
+    }
+    
+    .data-depoimento {
+        color: #888;
+        font-size: 12px;
+        text-align: right;
+        margin-top: 10px;
     }
     
     input, textarea, select {
@@ -70,6 +142,7 @@
         border-radius: 8px;
         font-size: 16px;
         transition: border-color 0.3s ease;
+        font-family: inherit;
     }
     
     input:focus, textarea:focus, select:focus {
@@ -82,7 +155,7 @@
         resize: vertical;
     }
     
-    button {
+    .btn-primary {
         background: linear-gradient(45deg, #4CAF50, #45a049);
         color: white;
         padding: 12px 30px;
@@ -95,169 +168,404 @@
         width: 100%;
     }
     
-    button:hover {
+    .btn-primary:hover {
+        transform: scale(1.02);
+    }
+    
+    .btn-admin {
+        background: linear-gradient(45deg, #ff9800, #f57000);
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        font-size: 14px;
+        margin: 5px;
+        transition: all 0.2s ease;
+    }
+    
+    .btn-admin:hover {
         transform: scale(1.05);
     }
     
-    .erro {
+    .admin-password {
+        max-width: 300px;
+        margin-bottom: 20px;
+    }
+    
+    .admin-locked {
+        text-align: center;
+        padding: 40px;
+        color: #666;
+    }
+    
+    .admin-stats {
+        background: #f8f9ff;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+    }
+    
+    .stat-item {
+        text-align: center;
+    }
+    
+    .stat-number {
+        font-size: 24px;
+        font-weight: bold;
+        color: #667eea;
+    }
+    
+    .stat-label {
+        color: #666;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    
+    .alert {
+        padding: 12px;
+        margin: 15px 0;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+    
+    .alert-success {
+        background: #e8f5e8;
+        color: #2e7d32;
+        border-left: 4px solid #4caf50;
+    }
+    
+    .alert-error {
         background: #ffebee;
         color: #c62828;
-        padding: 10px;
-        border-radius: 8px;
-        margin: 10px 0;
         border-left: 4px solid #f44336;
     }
     
-    .sucesso {
-        background: #e8f5e8;
-        color: #2e7d32;
-        padding: 10px;
-        border-radius: 8px;
-        margin: 10px 0;
-        border-left: 4px solid #4caf50;
+    .export-section {
+        background: #f5f5f5;
+        padding: 20px;
+        border-radius: 12px;
+        margin-top: 20px;
+    }
+    
+    .vazio {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+        padding: 40px;
     }
 </style>
 </head>
 <body>
 <div class="container">
-    <h2>💬 Deixe seu depoimento</h2>
+    <div class="tabs">
+        <button class="tab active" onclick="mostrarAba('cliente')">👥 Área do Cliente</button>
+        <button class="tab" onclick="mostrarAba('admin')">🔧 Administração</button>
+    </div>
     
-    <div id="mensagens"></div>
+    <!-- ABA CLIENTE -->
+    <div id="cliente" class="tab-content active">
+        <h2>💬 Deixe seu depoimento</h2>
+        
+        <div id="mensagensCliente"></div>
+        
+        <form id="formDepoimento">
+            <input type="text" id="nome" placeholder="Seu nome" required maxlength="50">
+            <textarea id="depoimento" placeholder="Conte-nos sobre sua experiência..." required maxlength="500"></textarea>
+            <select id="avaliacao">
+                <option value="5">⭐⭐⭐⭐⭐ Excelente</option>
+                <option value="4">⭐⭐⭐⭐ Muito Bom</option>
+                <option value="3">⭐⭐⭐ Bom</option>
+                <option value="2">⭐⭐ Regular</option>
+                <option value="1">⭐ Precisa Melhorar</option>
+            </select>
+            <button type="button" class="btn-primary" onclick="salvarDepoimento()">✨ Salvar Depoimento</button>
+        </form>
+        
+        <h3>📋 Depoimentos dos Clientes</h3>
+        <div id="listaDepoimentosCliente"></div>
+    </div>
     
-    <form id="formDepoimento">
-        <input type="text" id="nome" placeholder="Seu nome" required>
-        <textarea id="depoimento" placeholder="Conte-nos sobre sua experiência..." required></textarea>
-        <select id="avaliacao">
-            <option value="5">⭐⭐⭐⭐⭐ Excelente</option>
-            <option value="4">⭐⭐⭐⭐ Muito Bom</option>
-            <option value="3">⭐⭐⭐ Bom</option>
-            <option value="2">⭐⭐ Regular</option>
-            <option value="1">⭐ Precisa Melhorar</option>
-        </select>
-        <button id="btnSalvar" type="button">✨ Salvar Depoimento</button>
-    </form>
-    
-    <h3>📋 Depoimentos dos Clientes</h3>
-    <div id="listaDepoimentos"></div>
+    <!-- ABA ADMIN -->
+    <div id="admin" class="tab-content">
+        <div id="adminLogin" class="admin-locked">
+            <h2>🔒 Área Administrativa</h2>
+            <input type="password" id="senhaAdmin" class="admin-password" placeholder="Senha de administrador" onkeypress="if(event.key==='Enter') fazerLogin()">
+            <br>
+            <button class="btn-admin" onclick="fazerLogin()">🔑 Entrar</button>
+            <p style="font-size: 12px; color: #999; margin-top: 20px;">
+                Senha padrão: <code>admin123</code> (altere no código)
+            </p>
+        </div>
+        
+        <div id="adminPanel" style="display: none;">
+            <h2>🛠️ Painel de Administração</h2>
+            
+            <div class="admin-stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalDepoimentos">0</div>
+                    <div class="stat-label">Total de Depoimentos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="mediaAvaliacoes">0.0</div>
+                    <div class="stat-label">Média das Avaliações</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="depoimentosHoje">0</div>
+                    <div class="stat-label">Hoje</div>
+                </div>
+            </div>
+            
+            <div style="text-align: right; margin-bottom: 20px;">
+                <button class="btn-admin" onclick="exportarDados()">📁 Exportar JSON</button>
+                <button class="btn-admin" onclick="limparTodos()" style="background: linear-gradient(45deg, #f44336, #d32f2f);">🗑️ Limpar Todos</button>
+                <button class="btn-admin" onclick="logout()">🚪 Sair</button>
+            </div>
+            
+            <div id="mensagensAdmin"></div>
+            
+            <h3>📝 Gerenciar Depoimentos</h3>
+            <div id="listaDepoimentosAdmin"></div>
+            
+            <div class="export-section">
+                <h4>📤 Exportar Dados</h4>
+                <p>Use o botão "Exportar JSON" para baixar todos os depoimentos em formato JSON.</p>
+                <textarea id="exportData" rows="6" style="font-family: monospace; font-size: 12px;" readonly placeholder="Os dados exportados aparecerão aqui..."></textarea>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
-// Array para armazenar os depoimentos em memória durante a sessão
-let depoimentosArray = [];
+// Configurações
+const SENHA_ADMIN = 'admin123'; // ALTERE AQUI A SENHA DE ADMINISTRADOR
+let isAdminLoggedIn = false;
 
-// Função para mostrar mensagens
-function mostrarMensagem(texto, tipo) {
-    const divMensagens = document.getElementById("mensagens");
-    const div = document.createElement("div");
-    div.className = tipo;
+// Função para mostrar abas
+function mostrarAba(aba) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    
+    event.target.classList.add('active');
+    document.getElementById(aba).classList.add('active');
+    
+    if (aba === 'cliente') {
+        exibirDepoimentosCliente();
+    } else if (aba === 'admin' && isAdminLoggedIn) {
+        exibirDepoimentosAdmin();
+        atualizarEstatisticas();
+    }
+}
+
+// Funções de utilidade
+function mostrarMensagem(containerId, texto, tipo) {
+    const container = document.getElementById(containerId);
+    const div = document.createElement('div');
+    div.className = `alert alert-${tipo}`;
     div.textContent = texto;
-    divMensagens.appendChild(div);
+    container.appendChild(div);
     
-    setTimeout(() => {
-        div.remove();
-    }, 5000);
+    setTimeout(() => div.remove(), 5000);
 }
 
-// Função para carregar depoimentos do arquivo JSON
-async function carregarDepoimentos() {
-    try {
-        const response = await fetch('comentarios.json');
-        if (response.ok) {
-            const data = await response.json();
-            depoimentosArray = data.depoimentos || [];
-            exibirDepoimentos();
-        } else {
-            console.log('Arquivo comentarios.json não encontrado, iniciando com array vazio');
-            exibirDepoimentos();
-        }
-    } catch (error) {
-        console.log('Erro ao carregar depoimentos, usando dados em memória:', error);
-        mostrarMensagem('⚠️ Não foi possível carregar depoimentos salvos. Os depoimentos serão mantidos apenas durante esta sessão.', 'erro');
-        exibirDepoimentos();
-    }
-}
-
-// Função para exibir depoimentos na página
-function exibirDepoimentos() {
-    const lista = document.getElementById("listaDepoimentos");
-    lista.innerHTML = "";
-    
-    if (depoimentosArray.length === 0) {
-        lista.innerHTML = '<p style="text-align: center; color: #666; font-style: italic;">Nenhum depoimento ainda. Seja o primeiro a compartilhar sua experiência!</p>';
-        return;
-    }
-    
-    // Exibe os depoimentos mais recentes primeiro
-    depoimentosArray.slice().reverse().forEach(dep => {
-        let div = document.createElement("div");
-        div.classList.add("depoimento");
-        div.innerHTML = `
-            <div class="nome-autor">${escapeHtml(dep.nome)}</div>
-            <span class="avaliacao">${"⭐".repeat(dep.avaliacao)}</span>
-            <div class="mensagem-depoimento">"${escapeHtml(dep.mensagem)}"</div>
-        `;
-        lista.appendChild(div);
-    });
-}
-
-// Função para escapar HTML e prevenir XSS
 function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
 }
 
-// Função para salvar depoimento
+function gerarId() {
+    return Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+}
+
+function formatarData(isoString) {
+    const data = new Date(isoString);
+    return data.toLocaleString('pt-BR');
+}
+
+// Funções de dados
+function obterDepoimentos() {
+    const dados = localStorage.getItem('depoimentos_sistema');
+    return dados ? JSON.parse(dados) : [];
+}
+
+function salvarDepoimentos(depoimentos) {
+    localStorage.setItem('depoimentos_sistema', JSON.stringify(depoimentos));
+}
+
+// ÁREA DO CLIENTE
 function salvarDepoimento() {
-    const nome = document.getElementById("nome").value.trim();
-    const mensagem = document.getElementById("depoimento").value.trim();
-    const avaliacao = parseInt(document.getElementById("avaliacao").value);
+    const nome = document.getElementById('nome').value.trim();
+    const mensagem = document.getElementById('depoimento').value.trim();
+    const avaliacao = parseInt(document.getElementById('avaliacao').value);
     
     if (!nome || !mensagem) {
-        mostrarMensagem('❌ Por favor, preencha todos os campos!', 'erro');
-        return;
-    }
-    
-    if (nome.length > 50) {
-        mostrarMensagem('❌ Nome muito longo (máximo 50 caracteres)', 'erro');
-        return;
-    }
-    
-    if (mensagem.length > 500) {
-        mostrarMensagem('❌ Depoimento muito longo (máximo 500 caracteres)', 'erro');
+        mostrarMensagem('mensagensCliente', '❌ Por favor, preencha todos os campos!', 'error');
         return;
     }
     
     const novoDepoimento = {
+        id: gerarId(),
         nome: nome,
         mensagem: mensagem,
         avaliacao: avaliacao,
         data: new Date().toISOString()
     };
     
-    depoimentosArray.push(novoDepoimento);
-    exibirDepoimentos();
-    document.getElementById("formDepoimento").reset();
-    mostrarMensagem('✅ Depoimento registrado com sucesso! Obrigado por compartilhar sua experiência.', 'sucesso');
+    const depoimentos = obterDepoimentos();
+    depoimentos.push(novoDepoimento);
+    salvarDepoimentos(depoimentos);
     
-    // Mostra o JSON atualizado no console para facilitar a manutenção
-    console.log('JSON atualizado para salvar no arquivo comentarios.json:');
-    console.log(JSON.stringify({depoimentos: depoimentosArray}, null, 2));
+    document.getElementById('formDepoimento').reset();
+    exibirDepoimentosCliente();
+    mostrarMensagem('mensagensCliente', '✅ Depoimento registrado com sucesso! Obrigado por compartilhar sua experiência.', 'success');
 }
 
-// Event listeners
-document.getElementById("btnSalvar").addEventListener("click", salvarDepoimento);
-
-// Permite salvar com Enter no campo de nome
-document.getElementById("nome").addEventListener("keypress", function(e) {
-    if (e.key === 'Enter') {
-        document.getElementById("depoimento").focus();
+function exibirDepoimentosCliente() {
+    const lista = document.getElementById('listaDepoimentosCliente');
+    const depoimentos = obterDepoimentos();
+    
+    if (depoimentos.length === 0) {
+        lista.innerHTML = '<div class="vazio">Nenhum depoimento ainda. Seja o primeiro a compartilhar sua experiência!</div>';
+        return;
     }
-});
+    
+    lista.innerHTML = depoimentos
+        .slice().reverse() // Mais recentes primeiro
+        .map(dep => `
+            <div class="depoimento">
+                <div class="nome-autor">${escapeHtml(dep.nome)}</div>
+                <span class="avaliacao">${"⭐".repeat(dep.avaliacao)}</span>
+                <div class="mensagem-depoimento">"${escapeHtml(dep.mensagem)}"</div>
+                <div class="data-depoimento">${formatarData(dep.data)}</div>
+            </div>
+        `).join('');
+}
 
-// Carrega depoimentos ao inicializar a página
-carregarDepoimentos();
+// ÁREA ADMINISTRATIVA
+function fazerLogin() {
+    const senha = document.getElementById('senhaAdmin').value;
+    if (senha === SENHA_ADMIN) {
+        isAdminLoggedIn = true;
+        document.getElementById('adminLogin').style.display = 'none';
+        document.getElementById('adminPanel').style.display = 'block';
+        exibirDepoimentosAdmin();
+        atualizarEstatisticas();
+        mostrarMensagem('mensagensAdmin', '✅ Login realizado com sucesso!', 'success');
+    } else {
+        mostrarMensagem('mensagensAdmin', '❌ Senha incorreta!', 'error');
+    }
+    document.getElementById('senhaAdmin').value = '';
+}
+
+function logout() {
+    isAdminLoggedIn = false;
+    document.getElementById('adminLogin').style.display = 'block';
+    document.getElementById('adminPanel').style.display = 'none';
+    document.getElementById('senhaAdmin').value = '';
+}
+
+function exibirDepoimentosAdmin() {
+    const lista = document.getElementById('listaDepoimentosAdmin');
+    const depoimentos = obterDepoimentos();
+    
+    if (depoimentos.length === 0) {
+        lista.innerHTML = '<div class="vazio">Nenhum depoimento cadastrado.</div>';
+        return;
+    }
+    
+    lista.innerHTML = depoimentos
+        .slice().reverse() // Mais recentes primeiro
+        .map(dep => `
+            <div class="depoimento depoimento-admin" data-id="${dep.id}">
+                <button class="btn-excluir" onclick="excluirDepoimento('${dep.id}')" title="Excluir depoimento">×</button>
+                <div class="nome-autor">${escapeHtml(dep.nome)}</div>
+                <span class="avaliacao">${"⭐".repeat(dep.avaliacao)}</span>
+                <div class="mensagem-depoimento">"${escapeHtml(dep.mensagem)}"</div>
+                <div class="data-depoimento">ID: ${dep.id} • ${formatarData(dep.data)}</div>
+            </div>
+        `).join('');
+}
+
+function excluirDepoimento(id) {
+    if (!confirm('Tem certeza que deseja excluir este depoimento? Esta ação não pode ser desfeita.')) {
+        return;
+    }
+    
+    const depoimentos = obterDepoimentos();
+    const novosDepoimentos = depoimentos.filter(dep => dep.id !== id);
+    salvarDepoimentos(novosDepoimentos);
+    
+    exibirDepoimentosAdmin();
+    exibirDepoimentosCliente(); // Atualiza também a visualização do cliente
+    atualizarEstatisticas();
+    mostrarMensagem('mensagensAdmin', '✅ Depoimento excluído com sucesso!', 'success');
+}
+
+function limparTodos() {
+    if (!confirm('⚠️ ATENÇÃO: Tem certeza que deseja excluir TODOS os depoimentos?\n\nEsta ação é IRREVERSÍVEL!')) {
+        return;
+    }
+    
+    if (!confirm('Confirma novamente? Todos os depoimentos serão perdidos permanentemente!')) {
+        return;
+    }
+    
+    salvarDepoimentos([]);
+    exibirDepoimentosAdmin();
+    exibirDepoimentosCliente();
+    atualizarEstatisticas();
+    mostrarMensagem('mensagensAdmin', '🗑️ Todos os depoimentos foram excluídos!', 'success');
+}
+
+function atualizarEstatisticas() {
+    const depoimentos = obterDepoimentos();
+    const hoje = new Date().toDateString();
+    const depoimentosHoje = depoimentos.filter(dep => 
+        new Date(dep.data).toDateString() === hoje
+    ).length;
+    
+    const mediaAvaliacoes = depoimentos.length > 0 
+        ? (depoimentos.reduce((sum, dep) => sum + dep.avaliacao, 0) / depoimentos.length).toFixed(1)
+        : '0.0';
+    
+    document.getElementById('totalDepoimentos').textContent = depoimentos.length;
+    document.getElementById('mediaAvaliacoes').textContent = mediaAvaliacoes;
+    document.getElementById('depoimentosHoje').textContent = depoimentosHoje;
+}
+
+function exportarDados() {
+    const depoimentos = obterDepoimentos();
+    const dadosExport = {
+        exportado_em: new Date().toISOString(),
+        total_depoimentos: depoimentos.length,
+        depoimentos: depoimentos
+    };
+    
+    const jsonString = JSON.stringify(dadosExport, null, 2);
+    document.getElementById('exportData').value = jsonString;
+    
+    // Criar download
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `depoimentos_${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    mostrarMensagem('mensagensAdmin', '📁 Dados exportados com sucesso!', 'success');
+}
+
+// Inicialização
+document.addEventListener('DOMContentLoaded', function() {
+    exibirDepoimentosCliente();
+});
 </script>
-</div>
 </body>
 </html>
