@@ -22,11 +22,11 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
-            padding-bottom: 120px; /* Space for footer */
+            padding-bottom: 90px; /* Reduced for desktop */
         }
 
-        /* Header Section */
-        .header {
+        /* Header Section - Now inside testimonials section */
+        #testimonials .header {
             text-align: center;
             margin-bottom: 40px;
             background: rgba(255, 255, 255, 0.95);
@@ -156,7 +156,7 @@
             margin-top: 5px;
         }
 
-        /* Footer Navigation */
+        /* Footer Navigation - DESKTOP OPTIMIZED */
         .footer-nav {
             position: fixed;
             bottom: 0;
@@ -165,7 +165,7 @@
             background: linear-gradient(135deg, rgba(139, 69, 19, 0.95) 0%, rgba(205, 133, 63, 0.95) 100%);
             backdrop-filter: blur(10px);
             border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 15px 0;
+            padding: 10px 0; /* Reduced from 15px */
             box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
             z-index: 1000;
         }
@@ -177,24 +177,24 @@
             justify-content: center;
             align-items: center;
             padding: 0 20px;
-            gap: 50px;
+            gap: 30px; /* Reduced from 50px */
         }
 
         .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 5px; /* Reduced from 8px */
             background: none;
             border: none;
             color: white;
             cursor: pointer;
-            padding: 15px 25px;
-            border-radius: 15px;
+            padding: 10px 20px; /* Reduced from 15px 25px */
+            border-radius: 12px; /* Reduced from 15px */
             transition: all 0.3s ease;
             text-decoration: none;
             font-size: 16px;
-            min-width: 120px;
+            min-width: 100px; /* Reduced from 120px */
         }
 
         .nav-item:hover {
@@ -208,11 +208,11 @@
         }
 
         .nav-icon {
-            font-size: 32px;
+            font-size: 24px; /* Reduced from 32px */
         }
 
         .nav-text {
-            font-size: 14px;
+            font-size: 13px; /* Reduced from 14px */
             font-weight: 500;
             text-align: center;
         }
@@ -345,7 +345,7 @@
             }
 
             /* Header adjustments - MUCH MORE COMPACT */
-            .header {
+            #testimonials .header {
                 padding: 12px 10px;
                 margin-bottom: 12px;
                 border-radius: 12px;
@@ -526,7 +526,7 @@
                 padding-bottom: 70px;
             }
 
-            .header {
+            #testimonials .header {
                 padding: 10px 8px;
             }
 
@@ -630,7 +630,7 @@
                 padding-bottom: 60px;
             }
             
-            .header {
+            #testimonials .header {
                 margin-bottom: 8px;
                 padding: 8px 10px;
             }
@@ -693,35 +693,34 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="brand-section">
-                <div class="brand-logo">👩‍🍳</div>
-                <div class="brand-name">Brenda Cozinha Gourmet</div>
-                <div class="brand-tagline">"Sabores que encantam, momentos que ficam"</div>
-            </div>
-            <div class="header-description">
-                Descubra o que nossos clientes dizem sobre nossa culinária artesanal. 
-                Cada prato é preparado com amor, ingredientes selecionados e técnicas gourmets 
-                que transformam cada refeição em uma experiência inesquecível.
-            </div>
-        </div>
-
         <!-- Main Content -->
         <div class="main-content">
             <!-- Testimonials Section -->
             <div id="testimonials" class="content-section active">
+                <!-- Header -->
+                <div class="header">
+                    <div class="brand-section">
+                        <div class="brand-logo">👩‍🍳</div>
+                        <div class="brand-name">Brenda Cozinha Gourmet</div>
+                        <div class="brand-tagline">"Sabores que encantam, momentos que ficam"</div>
+                    </div>
+                    <div class="header-description">
+                        Descubra o que nossos clientes dizem sobre nossa culinária artesanal. 
+                        Cada prato é preparado com amor, ingredientes selecionados e técnicas gourmets 
+                        que transformam cada refeição em uma experiência inesquecível.
+                    </div>
+                </div>
+                
                 <div class="section-title">
                     🍽️ O que nossos clientes dizem
+                </div>
+                <div class="testimonials-grid" id="testimonialsGrid">
+                    <!-- Sample testimonials will be added here via JavaScript -->
                 </div>
             </div>
 
             <!-- Form Section -->
             <div id="form" class="content-section">
-                <div class="section-title">
-                    ✨ Compartilhe sua experiência
-                </div>
-                
                 <div class="form-section">
                     <div class="form-title">
                         🥘 Conte como foi sua experiência
@@ -776,6 +775,40 @@
     </div>
 
     <script>
+        // Sample testimonials data
+        const sampleTestimonials = [
+            {
+                name: "Maria Silva",
+                text: "A comida da Brenda é simplesmente excepcional! Cada prato é uma obra de arte. O risotto de cogumelos estava divino, e o atendimento foi impecável. Recomendo de olhos fechados!",
+                stars: "⭐⭐⭐⭐⭐",
+                date: "15/07/2024, 19:30"
+            },
+            {
+                name: "João Santos",
+                text: "Experiência incrível! A carne estava no ponto perfeito e os acompanhamentos harmonizaram perfeitamente. O ambiente é acolhedor e a apresentação dos pratos é impecável.",
+                stars: "⭐⭐⭐⭐⭐",
+                date: "12/07/2024, 20:15"
+            },
+            {
+                name: "Ana Costa",
+                text: "Que descoberta maravilhosa! A sobremesa de chocolate com frutas vermelhas estava sensacional. A Brenda tem um talento único para combinar sabores. Voltarei em breve!",
+                stars: "⭐⭐⭐⭐⭐",
+                date: "08/07/2024, 21:45"
+            },
+            {
+                name: "Carlos Oliveira",
+                text: "Pedimos o menu degustação e foi uma experiência gastronômica única. Cada prato superou nossas expectativas. A atenção aos detalhes é impressionante!",
+                stars: "⭐⭐⭐⭐⭐",
+                date: "05/07/2024, 19:00"
+            },
+            {
+                name: "Fernanda Lima",
+                text: "A pasta fresca estava deliciosa e o molho tinha um sabor autêntico. O serviço foi rápido e a comida chegou quentinha. Uma experiência muito agradável!",
+                stars: "⭐⭐⭐⭐",
+                date: "02/07/2024, 18:30"
+            }
+        ];
+
         // Navigation
         function showSection(sectionName) {
             // Remove active from all nav items and sections
@@ -789,6 +822,9 @@
 
         // Form Submission
         document.addEventListener('DOMContentLoaded', function() {
+            // Load sample testimonials
+            loadSampleTestimonials();
+
             document.getElementById('testimonialForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 
@@ -832,6 +868,27 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
+
+        function loadSampleTestimonials() {
+            const grid = document.getElementById('testimonialsGrid');
+            sampleTestimonials.forEach(testimonial => {
+                const card = document.createElement('div');
+                card.className = 'testimonial-card';
+                card.innerHTML = `
+                    <div class="testimonial-text">
+                        ${testimonial.text}
+                    </div>
+                    <div class="testimonial-author">
+                        <div>
+                            <div class="author-info">${testimonial.name}</div>
+                            <div class="testimonial-date">${testimonial.date}</div>
+                        </div>
+                        <div class="testimonial-stars">${testimonial.stars}</div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
 
         function addTestimonialToGrid(name, text, stars, date) {
             const grid = document.getElementById('testimonialsGrid');
