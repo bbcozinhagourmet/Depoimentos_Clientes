@@ -167,6 +167,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             padding: 15px 0;
             box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
         }
 
         .nav-container {
@@ -195,37 +196,6 @@
             font-size: 16px;
             min-width: 120px;
         }
-        
-        @media (max-width: 480px) {
-  .footer-nav .nav-container {
-    padding: 0 10px;
-  }
-
-  .footer-nav .nav-item {
-    flex: 1;
-    min-width: 0;
-    padding: 4px 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .footer-nav .nav-item .nav-icon {
-    font-size: 20px;
-    line-height: 1;
-  }
-
-  .footer-nav .nav-item .nav-text {
-    font-size: 11px;
-    line-height: 1.2;
-    padding-bottom: 0;
-  }
-
-  .footer-nav {
-    height: auto;
-  }
-}   
 
         .nav-item:hover {
             background: rgba(255, 255, 255, 0.2);
@@ -243,7 +213,7 @@
 
         .nav-text {
             font-size: 14px;
-            font-weight: 200;
+            font-weight: 500;
             text-align: center;
         }
 
@@ -367,37 +337,315 @@
             }
         }
 
-        /* Responsive Design */
+        /* MOBILE OPTIMIZATIONS */
         @media (max-width: 768px) {
             .container {
-                padding: 15px;
-                padding-bottom: 120px;
+                padding: 10px;
+                padding-bottom: 100px;
             }
 
-            .brand-name {
-                font-size: 24px;
+            /* Header adjustments */
+            .header {
+                padding: 20px 15px;
+                margin-bottom: 20px;
+                border-radius: 15px;
             }
 
             .brand-logo {
                 font-size: 48px;
+                margin-bottom: 8px;
+            }
+
+            .brand-name {
+                font-size: 24px;
+                margin-bottom: 6px;
+            }
+
+            .brand-tagline {
+                font-size: 16px;
+            }
+
+            .header-description {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+
+            /* Main content adjustments */
+            .main-content {
+                padding: 20px 15px;
+                border-radius: 15px;
+                margin-bottom: 20px;
+            }
+
+            .section-title {
+                font-size: 20px;
+                margin-bottom: 20px;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            /* Testimonial cards mobile */
+            .testimonials-grid {
+                gap: 15px;
+                margin-bottom: 20px;
+            }
+
+            .testimonial-card {
+                padding: 18px;
+                border-radius: 12px;
+                margin-bottom: 0;
+            }
+
+            .testimonial-card:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+
+            .testimonial-text {
+                font-size: 15px;
+                line-height: 1.6;
+                margin-bottom: 15px;
+            }
+
+            .testimonial-text::before {
+                font-size: 50px;
+                left: -12px;
+                top: -18px;
+            }
+
+            .testimonial-author {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .author-info {
+                font-size: 14px;
+            }
+
+            .testimonial-stars {
+                font-size: 18px;
+                align-self: flex-end;
+            }
+
+            .testimonial-date {
+                font-size: 11px;
+                margin-top: 3px;
+            }
+
+            /* Form mobile adjustments */
+            .form-section {
+                padding: 18px;
+                border-radius: 12px;
+            }
+
+            .form-title {
+                font-size: 18px;
+                margin-bottom: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .form-input, .form-textarea, .rating-select {
+                padding: 12px;
+                font-size: 16px;
+                border-radius: 10px;
+            }
+
+            .form-textarea {
+                min-height: 80px;
+            }
+
+            .rating-section {
+                margin-bottom: 15px;
+            }
+
+            .rating-label {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+
+            .submit-btn {
+                padding: 12px 25px;
+                font-size: 16px;
+                border-radius: 10px;
+            }
+
+            /* Success message mobile */
+            .success-message {
+                padding: 12px 15px;
+                margin: 15px 0;
+                border-radius: 10px;
+                font-size: 14px;
+            }
+
+            /* Footer navigation mobile */
+            .footer-nav {
+                padding: 8px 0;
             }
 
             .nav-container {
-                padding: 0 15px;
-                gap: 30px;
+                padding: 0 10px;
+                gap: 0;
+                justify-content: space-around;
+                max-width: 100%;
             }
 
             .nav-item {
-                padding: 12px 20px;
-                min-width: 100px;
+                padding: 8px 15px;
+                min-width: 0;
+                flex: 1;
+                max-width: 140px;
+                border-radius: 10px;
+            }
+
+            .nav-item:hover {
+                transform: translateY(-2px);
             }
 
             .nav-icon {
-                font-size: 28px;
+                font-size: 24px;
             }
 
             .nav-text {
+                font-size: 12px;
+                font-weight: 600;
+                line-height: 1.2;
+            }
+        }
+
+        /* EXTRA SMALL MOBILE (320px and below) */
+        @media (max-width: 375px) {
+            .container {
+                padding: 8px;
+                padding-bottom: 90px;
+            }
+
+            .header {
+                padding: 15px 12px;
+            }
+
+            .brand-logo {
+                font-size: 42px;
+            }
+
+            .brand-name {
+                font-size: 20px;
+            }
+
+            .brand-tagline {
+                font-size: 14px;
+            }
+
+            .header-description {
                 font-size: 13px;
+            }
+
+            .main-content {
+                padding: 15px 12px;
+            }
+
+            .section-title {
+                font-size: 18px;
+            }
+
+            .testimonial-card {
+                padding: 15px;
+            }
+
+            .testimonial-text {
+                font-size: 14px;
+            }
+
+            .testimonial-text::before {
+                font-size: 40px;
+                left: -8px;
+                top: -15px;
+            }
+
+            .form-section {
+                padding: 15px;
+            }
+
+            .form-title {
+                font-size: 16px;
+            }
+
+            .nav-item {
+                padding: 6px 8px;
+            }
+
+            .nav-icon {
+                font-size: 20px;
+            }
+
+            .nav-text {
+                font-size: 11px;
+            }
+
+            .footer-nav {
+                padding: 6px 0;
+            }
+        }
+
+        /* Landscape mobile optimization */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .container {
+                padding-bottom: 80px;
+            }
+            
+            .header {
+                margin-bottom: 15px;
+            }
+            
+            .footer-nav {
+                padding: 6px 0;
+            }
+            
+            .nav-item {
+                padding: 6px 12px;
+            }
+            
+            .nav-icon {
+                font-size: 20px;
+            }
+            
+            .nav-text {
+                font-size: 11px;
+            }
+        }
+
+        /* Touch improvements */
+        @media (hover: none) {
+            .testimonial-card:hover {
+                transform: none;
+                box-shadow: 0 8px 25px rgba(139, 69, 19, 0.1);
+            }
+            
+            .nav-item:hover {
+                transform: none;
+                background: rgba(255, 255, 255, 0.2);
+            }
+            
+            .submit-btn:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+
+        /* Improve text legibility on mobile */
+        @media (max-width: 768px) {
+            body {
+                -webkit-text-size-adjust: 100%;
+                text-rendering: optimizeLegibility;
+            }
+            
+            .testimonial-text, .form-input, .form-textarea {
+                line-height: 1.5;
             }
         }
     </style>
@@ -417,7 +665,6 @@
                 que transformam cada refeição em uma experiência inesquecível.
             </div>
         </div>
-    </div>
 
         <!-- Main Content -->
         <div class="main-content">
@@ -426,7 +673,7 @@
                 <div class="section-title">
                     🍽️ O que nossos clientes dizem
                 </div>
-                    
+                <div class="testimonials-grid" id="testimonialsGrid">
                     <div class="testimonial-card" data-author="Everton Assis">
                         <div class="testimonial-text">
                             Os cookies mais gostosos que já comi! 🍪 A massa estava perfeita e o recheio derretia na boca. Voltarei sempre!
@@ -549,8 +796,13 @@
                     successMessage.style.display = 'none';
                 }, 5000);
                 
-                // Scroll to top to see the new testimonial
-                document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+                // Switch to testimonials section and scroll to top
+                showSection('testimonials');
+                document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+                document.querySelector('.nav-item[onclick*="testimonials"]').classList.add('active');
+                
+                // Smooth scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
 
@@ -575,7 +827,27 @@
             
             // Add to beginning of grid (most recent first)
             grid.insertBefore(card, grid.firstChild);
+            
+            // Add a subtle animation for new testimonials
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                card.style.transition = 'all 0.5s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100);
         }
+
+        // Prevent zoom on input focus for iOS
+        document.querySelectorAll('input, textarea, select').forEach(function(element) {
+            element.addEventListener('focus', function() {
+                document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+            });
+            
+            element.addEventListener('blur', function() {
+                document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0');
+            });
+        });
     </script>
 </body>                                
 </html>
