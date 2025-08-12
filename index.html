@@ -173,25 +173,27 @@
             max-width: 900px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
             padding: 0 20px;
+            gap: 50px;
         }
 
         .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
             background: none;
             border: none;
             color: white;
             cursor: pointer;
-            padding: 10px 15px;
-            border-radius: 12px;
+            padding: 15px 25px;
+            border-radius: 15px;
             transition: all 0.3s ease;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 16px;
+            min-width: 120px;
         }
 
         .nav-item:hover {
@@ -205,11 +207,11 @@
         }
 
         .nav-icon {
-            font-size: 24px;
+            font-size: 32px;
         }
 
         .nav-text {
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 500;
             text-align: center;
         }
@@ -289,7 +291,7 @@
             color: #8b4513;
         }
 
-        .submit-btn, .admin-btn {
+        .submit-btn {
             background: linear-gradient(135deg, #d4a574 0%, #8b4513 100%);
             color: white;
             border: none;
@@ -306,101 +308,10 @@
             width: 100%;
         }
 
-        .submit-btn:hover, .admin-btn:hover {
+        .submit-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(139, 69, 19, 0.3);
         }
-
-        /* Admin Styles */
-        .admin-login {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .admin-login h3 {
-            color: #8b4513;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-size: 24px;
-        }
-
-        .password-input {
-            width: 100%;
-            max-width: 320px;
-            margin: 0 auto 20px;
-            padding: 15px;
-            border: 2px solid #e8dcc0;
-            border-radius: 12px;
-            font-size: 16px;
-            text-align: center;
-        }
-
-        .login-btn {
-            background: linear-gradient(135deg, #d4a574 0%, #8b4513 100%);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .admin-content {
-            display: none;
-        }
-
-        .admin-content.authenticated {
-            display: block;
-        }
-
-        .admin-stats {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border-left: 4px solid #d4a574;
-        }
-
-        .admin-testimonial-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #e8dcc0;
-        }
-
-        .admin-testimonial-item:last-child {
-            border-bottom: none;
-        }
-
-        .admin-controls {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 25px;
-        }
-
-        .admin-controls button {
-            flex: 1;
-            min-width: 140px;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-export { background: #28a745; color: white; }
-        .btn-clear { background: #dc3545; color: white; }
-        .btn-toggle { background: #ffc107; color: black; }
-        .btn-logout { background: #6c757d; color: white; }
 
         /* Success Message */
         .success-message {
@@ -441,27 +352,21 @@
             }
 
             .nav-container {
-                padding: 0 10px;
+                padding: 0 15px;
+                gap: 30px;
             }
 
             .nav-item {
-                padding: 8px 10px;
+                padding: 12px 20px;
+                min-width: 100px;
             }
 
             .nav-icon {
-                font-size: 20px;
+                font-size: 28px;
             }
 
             .nav-text {
-                font-size: 11px;
-            }
-
-            .admin-controls {
-                flex-direction: column;
-            }
-
-            .admin-controls button {
-                min-width: auto;
+                font-size: 13px;
             }
         }
     </style>
@@ -584,69 +489,6 @@
                     </form>
                 </div>
             </div>
-
-            <!-- Admin Section -->
-            <div id="admin" class="content-section">
-                <div class="admin-login" id="adminLogin">
-                    <h3>🔐 Painel Administrativo</h3>
-                    <p style="color: #666; margin-bottom: 25px;">Digite a senha para acessar o painel de gerenciamento:</p>
-                    <input type="password" id="adminPassword" class="password-input" placeholder="Digite a senha">
-                    <br>
-                    <button onclick="authenticateAdmin()" class="login-btn">🔓 Acessar Painel</button>
-                </div>
-
-                <div class="admin-content" id="adminContent">
-                    <div class="section-title">
-                        ⚙️ Gerenciar Depoimentos
-                        <button onclick="logoutAdmin()" class="btn-logout" style="margin-left: auto; padding: 5px 15px; font-size: 12px;">🚪 Sair</button>
-                    </div>
-                    
-                    <div class="form-section">
-                        <div class="admin-controls">
-                            <button onclick="exportTestimonials()" class="btn-export">
-                                📤 Exportar CSV
-                            </button>
-                            <button onclick="clearAllTestimonials()" class="btn-clear">
-                                🗑️ Limpar Todos
-                            </button>
-                            <button onclick="toggleTestimonialVisibility()" class="btn-toggle">
-                                👁️ Ocultar/Mostrar
-                            </button>
-                        </div>
-
-                        <div id="adminStats" class="admin-stats">
-                            <h4 style="margin-bottom: 15px; color: #8b4513;">📊 Estatísticas:</h4>
-                            <div id="statsContent">
-                                <p><strong>Total de depoimentos:</strong> <span id="totalCount">4</span></p>
-                                <p><strong>Média de avaliação:</strong> <span id="averageRating">5.0</span> ⭐</p>
-                                <p><strong>Último depoimento:</strong> <span id="lastTestimonial">11/08/2025</span></p>
-                            </div>
-                        </div>
-
-                        <div style="background: #e3f2fd; padding: 20px; border-radius: 12px; border-left: 4px solid #d4a574;">
-                            <h4 style="margin-bottom: 15px; color: #8b4513;">📋 Lista de Depoimentos:</h4>
-                            <div id="adminTestimonialsList">
-                                <div class="admin-testimonial-item" data-author="Maria Silva">
-                                    <strong>Maria Silva</strong> - ⭐⭐⭐⭐⭐
-                                    <button onclick="deleteTestimonial(this)" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 6px; font-size: 12px; cursor: pointer;">Excluir</button>
-                                </div>
-                                <div class="admin-testimonial-item" data-author="João Santos">
-                                    <strong>João Santos</strong> - ⭐⭐⭐⭐⭐
-                                    <button onclick="deleteTestimonial(this)" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 6px; font-size: 12px; cursor: pointer;">Excluir</button>
-                                </div>
-                                <div class="admin-testimonial-item" data-author="Ana Costa">
-                                    <strong>Ana Costa</strong> - ⭐⭐⭐⭐⭐
-                                    <button onclick="deleteTestimonial(this)" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 6px; font-size: 12px; cursor: pointer;">Excluir</button>
-                                </div>
-                                <div class="admin-testimonial-item" data-author="Everton Assis">
-                                    <strong>Everton Assis</strong> - ⭐⭐⭐⭐⭐
-                                    <button onclick="deleteTestimonial(this)" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 6px; font-size: 12px; cursor: pointer;">Excluir</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -661,18 +503,10 @@
                 <div class="nav-icon">✨</div>
                 <div class="nav-text">Deixar Avaliação</div>
             </button>
-            <button class="nav-item" onclick="showSection('admin')">
-                <div class="nav-icon">⚙️</div>
-                <div class="nav-text">Administração</div>
-            </button>
         </div>
     </div>
 
     <script>
-        // Authentication
-        let isAdminAuthenticated = false;
-        const ADMIN_PASSWORD = 'bb7621';
-
         // Navigation
         function showSection(sectionName) {
             // Remove active from all nav items and sections
@@ -682,97 +516,47 @@
             // Add active to current nav item and section
             event.target.closest('.nav-item').classList.add('active');
             document.getElementById(sectionName).classList.add('active');
-            
-            // Handle admin section
-            if (sectionName === 'admin' && !isAdminAuthenticated) {
-                document.getElementById('adminLogin').style.display = 'block';
-                document.getElementById('adminContent').classList.remove('authenticated');
-                setTimeout(() => {
-                    document.getElementById('adminPassword').focus();
-                }, 100);
-            }
-        }
-
-        // Admin Authentication
-        function authenticateAdmin() {
-            const password = document.getElementById('adminPassword').value;
-            
-            if (password === ADMIN_PASSWORD) {
-                isAdminAuthenticated = true;
-                document.getElementById('adminLogin').style.display = 'none';
-                document.getElementById('adminContent').classList.add('authenticated');
-                document.getElementById('adminPassword').value = '';
-                updateAdminStats();
-            } else {
-                alert('Senha incorreta! 🔒');
-                document.getElementById('adminPassword').value = '';
-                document.getElementById('adminPassword').focus();
-            }
-        }
-
-        // Handle Enter key press on password input
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('adminPassword').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    authenticateAdmin();
-                }
-            });
-        });
-
-        function logoutAdmin() {
-            if (confirm('Deseja realmente sair do painel administrativo?')) {
-                isAdminAuthenticated = false;
-                document.getElementById('adminLogin').style.display = 'block';
-                document.getElementById('adminContent').classList.remove('authenticated');
-                showSection('testimonials');
-            }
         }
 
         // Form Submission
-        document.getElementById('testimonialForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const authorName = document.getElementById('authorName').value;
-            const testimonialText = document.getElementById('testimonialText').value;
-            const rating = document.getElementById('ratingSelect').value;
-            
-            if (!authorName || !testimonialText || !rating) {
-                alert('Por favor, preencha todos os campos! 📝');
-                return;
-            }
-            
-            // Create date string
-            const now = new Date();
-            const dateString = now.toLocaleDateString('pt-BR') + ', ' + now.toLocaleTimeString('pt-BR');
-            
-            // Create stars string
-            const stars = '⭐'.repeat(parseInt(rating));
-            
-            // Add testimonial to grid
-            addTestimonialToGrid(authorName, testimonialText, stars, dateString);
-            
-            // Add testimonial to admin list
-            addTestimonialToAdminList(authorName, stars);
-            
-            // Update admin stats if authenticated
-            if (isAdminAuthenticated) {
-                updateAdminStats();
-            }
-            
-            // Show success message
-            const successMessage = document.getElementById('successMessage');
-            successMessage.style.display = 'block';
-            
-            // Clear form
-            document.getElementById('testimonialForm').reset();
-            
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                successMessage.style.display = 'none';
-            }, 5000);
-            
-            // Scroll to top to see the new testimonial
-            document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('testimonialForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const authorName = document.getElementById('authorName').value;
+                const testimonialText = document.getElementById('testimonialText').value;
+                const rating = document.getElementById('ratingSelect').value;
+                
+                if (!authorName || !testimonialText || !rating) {
+                    alert('Por favor, preencha todos os campos! 📝');
+                    return;
+                }
+                
+                // Create date string
+                const now = new Date();
+                const dateString = now.toLocaleDateString('pt-BR') + ', ' + now.toLocaleTimeString('pt-BR');
+                
+                // Create stars string
+                const stars = '⭐'.repeat(parseInt(rating));
+                
+                // Add testimonial to grid
+                addTestimonialToGrid(authorName, testimonialText, stars, dateString);
+                
+                // Show success message
+                const successMessage = document.getElementById('successMessage');
+                successMessage.style.display = 'block';
+                
+                // Clear form
+                document.getElementById('testimonialForm').reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+                
+                // Scroll to top to see the new testimonial
+                document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+            });
         });
 
         function addTestimonialToGrid(name, text, stars, date) {
@@ -797,147 +581,6 @@
             // Add to beginning of grid (most recent first)
             grid.insertBefore(card, grid.firstChild);
         }
-
-        function addTestimonialToAdminList(name, stars) {
-            const list = document.getElementById('adminTestimonialsList');
-            
-            // Remove "no testimonials" message if it exists
-            const noTestimonialsMsg = list.querySelector('p');
-            if (noTestimonialsMsg) {
-                noTestimonialsMsg.remove();
-            }
-            
-            const item = document.createElement('div');
-            item.className = 'admin-testimonial-item';
-            item.setAttribute('data-author', name);
-            
-            item.innerHTML = `
-                <strong>${name}</strong> - ${stars}
-                <button onclick="deleteTestimonial(this)" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 6px; font-size: 12px; cursor: pointer;">Excluir</button>
-            `;
-            
-            // Add to beginning of list (most recent first)
-            list.insertBefore(item, list.firstChild);
-        }
-
-        // Admin Functions
-        function exportTestimonials() {
-            if (!isAdminAuthenticated) {
-                alert('Acesso negado! Faça login primeiro. 🔒');
-                return;
-            }
-            
-            const testimonials = document.querySelectorAll('.testimonial-card');
-            let data = "Nome,Depoimento,Avaliação,Data\n";
-            
-            testimonials.forEach(card => {
-                const text = card.querySelector('.testimonial-text').textContent.replace(/"/g, '""');
-                const author = card.querySelector('.author-info').textContent;
-                const stars = card.querySelector('.testimonial-stars').textContent.length;
-                const dateEl = card.querySelector('.testimonial-date');
-                const date = dateEl ? dateEl.textContent : 'N/A';
-                data += `"${author}","${text}","${stars}","${date}"\n`;
-            });
-            
-            const blob = new Blob([data], { type: 'text/csv;charset=utf-8;' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'depoimentos_brenda_cozinha_gourmet.csv';
-            a.click();
-            window.URL.revokeObjectURL(url);
-            
-            alert('Dados exportados com sucesso! 📤');
-        }
-
-        function clearAllTestimonials() {
-            if (!isAdminAuthenticated) {
-                alert('Acesso negado! Faça login primeiro. 🔒');
-                return;
-            }
-            
-            if (confirm('Tem certeza que deseja excluir TODOS os depoimentos? Esta ação não pode ser desfeita!')) {
-                document.getElementById('testimonialsGrid').innerHTML = '';
-                document.getElementById('adminTestimonialsList').innerHTML = '<p style="color: #999; font-style: italic; text-align: center; padding: 20px;">Nenhum depoimento encontrado.</p>';
-                updateAdminStats();
-                alert('Todos os depoimentos foram excluídos! 🗑️');
-            }
-        }
-
-        function toggleTestimonialVisibility() {
-            if (!isAdminAuthenticated) {
-                alert('Acesso negado! Faça login primeiro. 🔒');
-                return;
-            }
-            
-            const grid = document.getElementById('testimonialsGrid');
-            if (grid.style.display === 'none') {
-                grid.style.display = 'grid';
-                alert('Depoimentos estão agora visíveis! 👁️');
-            } else {
-                grid.style.display = 'none';
-                alert('Depoimentos foram ocultados! 🙈');
-            }
-        }
-
-        function deleteTestimonial(button) {
-            if (!isAdminAuthenticated) {
-                alert('Acesso negado! Faça login primeiro. 🔒');
-                return;
-            }
-            
-            if (confirm('Tem certeza que deseja excluir este depoimento?')) {
-                const item = button.parentElement;
-                const authorName = item.querySelector('strong').textContent;
-                
-                // Remove from admin list
-                item.remove();
-                
-                // Remove from testimonials grid
-                const testimonialCard = document.querySelector(`.testimonial-card[data-author="${authorName}"]`);
-                if (testimonialCard) {
-                    testimonialCard.remove();
-                }
-                
-                // Check if list is empty and add message
-                const list = document.getElementById('adminTestimonialsList');
-                if (list.children.length === 0) {
-                    list.innerHTML = '<p style="color: #999; font-style: italic; text-align: center; padding: 20px;">Nenhum depoimento encontrado.</p>';
-                }
-                
-                updateAdminStats();
-                alert('Depoimento excluído com sucesso! 🗑️');
-            }
-        }
-
-        function updateAdminStats() {
-            const testimonials = document.querySelectorAll('.testimonial-card');
-            const total = testimonials.length;
-            
-            let totalStars = 0;
-            let lastDate = 'N/A';
-            
-            testimonials.forEach(card => {
-                const stars = card.querySelector('.testimonial-stars').textContent.length;
-                totalStars += stars;
-                
-                const dateEl = card.querySelector('.testimonial-date');
-                if (dateEl && lastDate === 'N/A') {
-                    lastDate = dateEl.textContent.split(',')[0]; // Get just the date part
-                }
-            });
-            
-            const average = total > 0 ? (totalStars / total).toFixed(1) : '0.0';
-            
-            document.getElementById('totalCount').textContent = total;
-            document.getElementById('averageRating').textContent = average;
-            document.getElementById('lastTestimonial').textContent = lastDate;
-        }
-
-        // Initialize stats on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            updateAdminStats();
-        });
     </script>
 </body>
-</html>
+                                    </html>
