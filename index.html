@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💬 Depoimentos dos Clientes</title>
+    <title>👩‍🍳 Depoimentos - Brenda Cozinha Gourmet</title>
     <style>
         * {
             margin: 0;
@@ -13,111 +13,123 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #d4a574 0%, #8b4513 50%, #cd853f 100%);
             min-height: 100vh;
             color: #333;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
+            padding-bottom: 120px; /* Space for footer */
         }
 
+        /* Header Section */
         .header {
             text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .tabs {
-            display: flex;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 5px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
         }
 
-        .tab-button {
-            flex: 1;
-            padding: 15px 20px;
-            border: none;
-            background: transparent;
-            color: white;
-            font-size: 16px;
+        .brand-section {
+            margin-bottom: 20px;
+        }
+
+        .brand-logo {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+
+        .brand-name {
+            color: #8b4513;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .brand-tagline {
+            color: #d4a574;
+            font-size: 18px;
             font-weight: 500;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: all 0.3s ease;
+            font-style: italic;
+        }
+
+        .header-description {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: #8b4513;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
+            text-align: center;
         }
 
-        .tab-button.active {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .tab-content {
-            display: none;
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Seção de Depoimentos */
+        /* Testimonials Grid */
         .testimonials-grid {
             display: grid;
-            gap: 20px;
+            gap: 25px;
             margin-bottom: 30px;
         }
 
         .testimonial-card {
-            background: linear-gradient(135deg, #f8f9ff 0%, #e8f0ff 100%);
-            border-radius: 15px;
+            background: linear-gradient(135deg, #faf7f2 0%, #f5f0e8 100%);
+            border-radius: 18px;
             padding: 25px;
-            border-left: 4px solid #667eea;
+            border-left: 5px solid #d4a574;
             position: relative;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.1);
         }
 
         .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.2);
         }
 
         .testimonial-text {
             font-style: italic;
             font-size: 16px;
-            line-height: 1.6;
+            line-height: 1.7;
             color: #555;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             position: relative;
         }
 
         .testimonial-text::before {
             content: '"';
-            font-size: 60px;
-            color: #667eea;
+            font-size: 70px;
+            color: #d4a574;
             position: absolute;
-            left: -15px;
-            top: -20px;
-            opacity: 0.3;
+            left: -18px;
+            top: -25px;
+            opacity: 0.4;
+            font-family: serif;
         }
 
         .testimonial-author {
@@ -128,13 +140,14 @@
 
         .author-info {
             font-weight: 600;
-            color: #333;
-            font-size: 14px;
+            color: #8b4513;
+            font-size: 15px;
         }
 
         .testimonial-stars {
             color: #ffd700;
-            font-size: 18px;
+            font-size: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         .testimonial-date {
@@ -143,21 +156,100 @@
             margin-top: 5px;
         }
 
-        /* Formulário de Depoimento */
+        /* Footer Navigation */
+        .footer-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.95) 0%, rgba(205, 133, 63, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px 0;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .nav-item.active {
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-icon {
+            font-size: 24px;
+        }
+
+        .nav-text {
+            font-size: 12px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Content sections */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        /* Form Styles */
         .form-section {
-            background: linear-gradient(135deg, #f8f9ff 0%, #e8f0ff 100%);
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 20px;
+            background: linear-gradient(135deg, #faf7f2 0%, #f5f0e8 100%);
+            border-radius: 18px;
+            padding: 25px;
+            border-left: 5px solid #d4a574;
         }
 
         .form-title {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 20px;
-            color: #333;
-            font-size: 18px;
+            margin-bottom: 25px;
+            color: #8b4513;
+            font-size: 20px;
             font-weight: 600;
         }
 
@@ -165,20 +257,20 @@
             margin-bottom: 20px;
         }
 
-        .form-input, .form-textarea {
+        .form-input, .form-textarea, .rating-select {
             width: 100%;
             padding: 15px;
-            border: 2px solid #e1e8ed;
-            border-radius: 10px;
+            border: 2px solid #e8dcc0;
+            border-radius: 12px;
             font-size: 16px;
             transition: all 0.3s ease;
             background: white;
         }
 
-        .form-input:focus, .form-textarea:focus {
+        .form-input:focus, .form-textarea:focus, .rating-select:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #d4a574;
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
         }
 
         .form-textarea {
@@ -194,25 +286,15 @@
             display: block;
             margin-bottom: 10px;
             font-weight: 500;
-            color: #333;
+            color: #8b4513;
         }
 
-        .rating-select {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e1e8ed;
-            border-radius: 10px;
-            font-size: 16px;
-            background: white;
-            cursor: pointer;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .submit-btn, .admin-btn {
+            background: linear-gradient(135deg, #d4a574 0%, #8b4513 100%);
             color: white;
             border: none;
             padding: 15px 30px;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
@@ -224,94 +306,48 @@
             width: 100%;
         }
 
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        .submit-btn:hover, .admin-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(139, 69, 19, 0.3);
         }
 
-        .section-title {
-            color: #333;
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Responsivo */
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-
-            .tabs {
-                flex-direction: column;
-                gap: 5px;
-            }
-
-            .tab-content {
-                padding: 20px;
-            }
-
-            .testimonial-card {
-                padding: 20px;
-            }
-        }
-
-        /* Estilos para Admin */
-        .admin-testimonial-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid #e1e8ed;
-        }
-
-        .admin-testimonial-item:last-child {
-            border-bottom: none;
-        }
-
+        /* Admin Styles */
         .admin-login {
             text-align: center;
             padding: 40px 20px;
         }
 
         .admin-login h3 {
-            color: #333;
+            color: #8b4513;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            font-size: 24px;
         }
 
         .password-input {
             width: 100%;
-            max-width: 300px;
+            max-width: 320px;
             margin: 0 auto 20px;
             padding: 15px;
-            border: 2px solid #e1e8ed;
-            border-radius: 10px;
+            border: 2px solid #e8dcc0;
+            border-radius: 12px;
             font-size: 16px;
             text-align: center;
         }
 
         .login-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #d4a574 0%, #8b4513 100%);
             color: white;
             border: none;
             padding: 12px 30px;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-        }
-
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
         }
 
         .admin-content {
@@ -321,183 +357,290 @@
         .admin-content.authenticated {
             display: block;
         }
+
+        .admin-stats {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid #d4a574;
+        }
+
+        .admin-testimonial-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e8dcc0;
+        }
+
+        .admin-testimonial-item:last-child {
+            border-bottom: none;
+        }
+
+        .admin-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .admin-controls button {
+            flex: 1;
+            min-width: 140px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-export { background: #28a745; color: white; }
+        .btn-clear { background: #dc3545; color: white; }
+        .btn-toggle { background: #ffc107; color: black; }
+        .btn-logout { background: #6c757d; color: white; }
+
+        /* Success Message */
+        .success-message {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            color: #155724;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 1px solid #c3e6cb;
+            display: none;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                padding-bottom: 120px;
+            }
+
+            .brand-name {
+                font-size: 24px;
+            }
+
+            .brand-logo {
+                font-size: 48px;
+            }
+
+            .nav-container {
+                padding: 0 10px;
+            }
+
+            .nav-item {
+                padding: 8px 10px;
+            }
+
+            .nav-icon {
+                font-size: 20px;
+            }
+
+            .nav-text {
+                font-size: 11px;
+            }
+
+            .admin-controls {
+                flex-direction: column;
+            }
+
+            .admin-controls button {
+                min-width: auto;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Header -->
         <div class="header">
-            <h1 style="color: white; font-size: 28px; margin-bottom: 10px;">🌟 Avaliações dos Clientes</h1>
-            <p style="color: rgba(255,255,255,0.8); font-size: 16px;">Compartilhe sua experiência conosco</p>
-        </div>
-
-        <div class="tabs">
-            <button class="tab-button active" onclick="switchTab('testimonials')">
-                📝 Ver Depoimentos
-            </button>
-            <button class="tab-button" onclick="switchTab('form')">
-                ✨ Deixar Avaliação
-            </button>
-            <button class="tab-button" onclick="switchTab('admin')">
-                🔧 Administração
-            </button>
-        </div>
-
-        <!-- Aba de Depoimentos -->
-        <div id="testimonials" class="tab-content active">
-            <div class="section-title">
-                📋 Depoimentos dos Clientes
+            <div class="brand-section">
+                <div class="brand-logo">👩‍🍳</div>
+                <div class="brand-name">Brenda Cozinha Gourmet</div>
+                <div class="brand-tagline">"Sabores que encantam, momentos que ficam"</div>
             </div>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        A Brenda transformou completamente minha forma de cozinhar! As receitas são incríveis e as dicas fazem toda a diferença. Minha família adora os pratos que aprendi com ela!
-                    </div>
-                    <div class="testimonial-author">
-                        <div>
-                            <div class="author-info">Maria Silva</div>
-                        </div>
-                        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        Consultoria gastronômica excepcional! A Brenda me ajudou a organizar minha cozinha e criar um cardápio especial para meu evento. Todos os convidados elogiaram!
-                    </div>
-                    <div class="testimonial-author">
-                        <div>
-                            <div class="author-info">João Santos</div>
-                        </div>
-                        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        Produtos de qualidade excepcional e atendimento personalizado. A Brenda realmente entende do assunto e passa muita confiança. Super recomendo!
-                    </div>
-                    <div class="testimonial-author">
-                        <div>
-                            <div class="author-info">Ana Costa</div>
-                        </div>
-                        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        Os cookies mais gostosos que já comi! 🍪
-                    </div>
-                    <div class="testimonial-author">
-                        <div>
-                            <div class="author-info">Everton Assis</div>
-                            <div class="testimonial-date">11/08/2025, 20:06:53</div>
-                        </div>
-                        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                    </div>
-                </div>
+            <div class="header-description">
+                Descubra o que nossos clientes dizem sobre nossa culinária artesanal. 
+                Cada prato é preparado com amor, ingredientes selecionados e técnicas gourmets 
+                que transformam cada refeição em uma experiência inesquecível.
             </div>
         </div>
 
-        <!-- Aba do Formulário -->
-        <div id="form" class="tab-content">
-            <div class="form-section">
-                <div class="form-title">
-                    💬 Deixe seu depoimento
-                </div>
-
-                <form id="testimonialForm">
-                    <div class="form-group">
-                        <input type="text" class="form-input" placeholder="Seu nome" required>
-                    </div>
-
-                    <div class="form-group">
-                        <textarea class="form-textarea" placeholder="Conte-nos sobre sua experiência..." required></textarea>
-                    </div>
-
-                    <div class="rating-section">
-                        <label class="rating-label">Avaliação:</label>
-                        <select class="rating-select" required>
-                            <option value="">Selecione uma avaliação</option>
-                            <option value="5">⭐⭐⭐⭐⭐ Excelente</option>
-                            <option value="4">⭐⭐⭐⭐ Muito Bom</option>
-                            <option value="3">⭐⭐⭐ Bom</option>
-                            <option value="2">⭐⭐ Regular</option>
-                            <option value="1">⭐ Precisa Melhorar</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="submit-btn">
-                        ✨ Salvar Depoimento
-                    </button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Aba de Administração -->
-        <div id="admin" class="tab-content">
-            <div class="admin-login" id="adminLogin">
-                <h3>🔐 Acesso Administrativo</h3>
-                <p style="color: #666; margin-bottom: 20px;">Digite a senha para acessar o painel administrativo:</p>
-                <input type="password" id="adminPassword" class="password-input" placeholder="Digite a senha">
-                <br>
-                <button onclick="authenticateAdmin()" class="login-btn">🔓 Entrar</button>
-            </div>
-
-            <div class="admin-content" id="adminContent">
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Testimonials Section -->
+            <div id="testimonials" class="content-section active">
                 <div class="section-title">
-                    🔧 Painel de Administração
-                    <button onclick="logoutAdmin()" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 5px; font-size: 12px; margin-left: 10px; cursor: pointer;">🚪 Sair</button>
+                    🍽️ O que nossos clientes dizem
+                </div>
+                
+                <div class="testimonials-grid" id="testimonialsGrid">
+                    <div class="testimonial-card" data-author="Maria Silva">
+                        <div class="testimonial-text">
+                            A Brenda transformou completamente minha forma de cozinhar! As receitas são incríveis e as dicas fazem toda a diferença. Minha família adora os pratos que aprendi com ela!
+                        </div>
+                        <div class="testimonial-author">
+                            <div>
+                                <div class="author-info">Maria Silva</div>
+                            </div>
+                            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card" data-author="João Santos">
+                        <div class="testimonial-text">
+                            Consultoria gastronômica excepcional! A Brenda me ajudou a organizar minha cozinha e criar um cardápio especial para meu evento. Todos os convidados elogiaram!
+                        </div>
+                        <div class="testimonial-author">
+                            <div>
+                                <div class="author-info">João Santos</div>
+                            </div>
+                            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card" data-author="Ana Costa">
+                        <div class="testimonial-text">
+                            Produtos de qualidade excepcional e atendimento personalizado. A Brenda realmente entende do assunto e passa muita confiança. Super recomendo!
+                        </div>
+                        <div class="testimonial-author">
+                            <div>
+                                <div class="author-info">Ana Costa</div>
+                            </div>
+                            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card" data-author="Everton Assis">
+                        <div class="testimonial-text">
+                            Os cookies mais gostosos que já comi! 🍪 A massa estava perfeita e o recheio derretia na boca. Voltarei sempre!
+                        </div>
+                        <div class="testimonial-author">
+                            <div>
+                                <div class="author-info">Everton Assis</div>
+                                <div class="testimonial-date">11/08/2025, 20:06:53</div>
+                            </div>
+                            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Section -->
+            <div id="form" class="content-section">
+                <div class="section-title">
+                    ✨ Compartilhe sua experiência
                 </div>
                 
                 <div class="form-section">
                     <div class="form-title">
-                        🗂️ Gerenciar Depoimentos
+                        🥘 Conte como foi sua experiência
                     </div>
 
-                    <div style="margin-bottom: 20px;">
-                        <p style="color: #666; margin-bottom: 15px;">Aqui você pode gerenciar todos os depoimentos do sistema:</p>
-                        
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
-                            <button onclick="exportTestimonials()" style="background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px;">
-                                📤 Exportar Dados
+                    <div class="success-message" id="successMessage">
+                        ✅ Obrigada pelo seu depoimento! Ele foi adicionado com sucesso e já aparece na lista de avaliações.
+                    </div>
+
+                    <form id="testimonialForm">
+                        <div class="form-group">
+                            <input type="text" id="authorName" class="form-input" placeholder="Seu nome" required>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea id="testimonialText" class="form-textarea" placeholder="Como foi sua experiência com nossos pratos e serviços?" required></textarea>
+                        </div>
+
+                        <div class="rating-section">
+                            <label class="rating-label">Sua avaliação:</label>
+                            <select id="ratingSelect" class="rating-select" required>
+                                <option value="">Selecione uma avaliação</option>
+                                <option value="5">⭐⭐⭐⭐⭐ Excepcional</option>
+                                <option value="4">⭐⭐⭐⭐ Muito Bom</option>
+                                <option value="3">⭐⭐⭐ Bom</option>
+                                <option value="2">⭐⭐ Regular</option>
+                                <option value="1">⭐ Precisa Melhorar</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            🍴 Enviar Depoimento
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Admin Section -->
+            <div id="admin" class="content-section">
+                <div class="admin-login" id="adminLogin">
+                    <h3>🔐 Painel Administrativo</h3>
+                    <p style="color: #666; margin-bottom: 25px;">Digite a senha para acessar o painel de gerenciamento:</p>
+                    <input type="password" id="adminPassword" class="password-input" placeholder="Digite a senha">
+                    <br>
+                    <button onclick="authenticateAdmin()" class="login-btn">🔓 Acessar Painel</button>
+                </div>
+
+                <div class="admin-content" id="adminContent">
+                    <div class="section-title">
+                        ⚙️ Gerenciar Depoimentos
+                        <button onclick="logoutAdmin()" class="btn-logout" style="margin-left: auto; padding: 5px 15px; font-size: 12px;">🚪 Sair</button>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="admin-controls">
+                            <button onclick="exportTestimonials()" class="btn-export">
+                                📤 Exportar CSV
                             </button>
-                            <button onclick="clearAllTestimonials()" style="background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px;">
+                            <button onclick="clearAllTestimonials()" class="btn-clear">
                                 🗑️ Limpar Todos
                             </button>
-                            <button onclick="toggleTestimonialVisibility()" style="background: #ffc107; color: black; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px;">
+                            <button onclick="toggleTestimonialVisibility()" class="btn-toggle">
                                 👁️ Ocultar/Mostrar
                             </button>
                         </div>
 
-                        <div id="adminStats" style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
-                            <h4 style="margin-bottom: 10px; color: #333;">📊 Estatísticas:</h4>
+                        <div id="adminStats" class="admin-stats">
+                            <h4 style="margin-bottom: 15px; color: #8b4513;">📊 Estatísticas:</h4>
                             <div id="statsContent">
-                                <p>Total de depoimentos: <span id="totalCount">4</span></p>
-                                <p>Média de avaliação: <span id="averageRating">5.0</span> ⭐</p>
-                                <p>Último depoimento: <span id="lastTestimonial">11/08/2025</span></p>
+                                <p><strong>Total de depoimentos:</strong> <span id="totalCount">4</span></p>
+                                <p><strong>Média de avaliação:</strong> <span id="averageRating">5.0</span> ⭐</p>
+                                <p><strong>Último depoimento:</strong> <span id="lastTestimonial">11/08/2025</span></p>
                             </div>
                         </div>
 
-                        <div style="background: #e3f2fd; padding: 15px; border-radius: 10px; border-left: 4px solid #2196f3;">
-                            <h4 style="margin-bottom: 10px; color: #1976d2;">📋 Lista de Depoimentos:</h4>
+                        <div style="background: #e3f2fd; padding: 20px; border-radius: 12px; border-left: 4px solid #d4a574;">
+                            <h4 style="margin-bottom: 15px; color: #8b4513;">📋 Lista de Depoimentos:</h4>
                             <div id="adminTestimonialsList">
-                                <div class="admin-testimonial-item">
+                                <div class="admin-testimonial-item" data-author="Maria Silva">
                                     <strong>Maria Silva</strong> - ⭐⭐⭐⭐⭐
-                                    <button onclick="deleteTestimonial(this)" style="background: #dc3545; color: white; border: none; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 10px; cursor: pointer;">Excluir</button>
+                                    <button onclick="deleteTestimonial(this)" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 6px; font-size: 12px; cursor: pointer;">Excluir</button>
                                 </div>
-                                <div class="admin-testimonial-item">
+                                <div class="admin-testimonial-item" data-author="João Santos">
                                     <strong>João Santos</strong> - ⭐⭐⭐⭐⭐
-                                    <button onclick="deleteTestimonial(this)" style="background: #dc3545; color: white; border: none; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 10px; cursor: pointer;">Excluir</button>
+                                    <button onclick="deleteTestimonial(this)" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 6px; font-size: 12px; cursor: pointer;">Excluir</button>
                                 </div>
-                                <div class="admin-testimonial-item">
+                                <div class="admin-testimonial-item" data-author="Ana Costa">
                                     <strong>Ana Costa</strong> - ⭐⭐⭐⭐⭐
-                                    <button onclick="deleteTestimonial(this)" style="background: #dc3545; color: white; border: none; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 10px; cursor: pointer;">Excluir</button>
+                                    <button onclick="deleteTestimonial(this)" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 6px; font-size: 12px; cursor: pointer;">Excluir</button>
                                 </div>
-                                <div class="admin-testimonial-item">
+                                <div class="admin-testimonial-item" data-author="Everton Assis">
                                     <strong>Everton Assis</strong> - ⭐⭐⭐⭐⭐
-                                    <button onclick="deleteTestimonial(this)" style="background: #dc3545; color: white; border: none; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 10px; cursor: pointer;">Excluir</button>
+                                    <button onclick="deleteTestimonial(this)" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 6px; font-size: 12px; cursor: pointer;">Excluir</button>
                                 </div>
                             </div>
                         </div>
@@ -507,62 +650,41 @@
         </div>
     </div>
 
+    <!-- Footer Navigation -->
+    <div class="footer-nav">
+        <div class="nav-container">
+            <button class="nav-item active" onclick="showSection('testimonials')">
+                <div class="nav-icon">🍽️</div>
+                <div class="nav-text">Ver Depoimentos</div>
+            </button>
+            <button class="nav-item" onclick="showSection('form')">
+                <div class="nav-icon">✨</div>
+                <div class="nav-text">Deixar Avaliação</div>
+            </button>
+            <button class="nav-item" onclick="showSection('admin')">
+                <div class="nav-icon">⚙️</div>
+                <div class="nav-text">Administração</div>
+            </button>
+        </div>
+    </div>
+
     <script>
-        // Admin Authentication
+        // Authentication
         let isAdminAuthenticated = false;
         const ADMIN_PASSWORD = 'bb7621';
 
-        function authenticateAdmin() {
-            const password = document.getElementById('adminPassword').value;
+        // Navigation
+        function showSection(sectionName) {
+            // Remove active from all nav items and sections
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
             
-            if (password === ADMIN_PASSWORD) {
-                isAdminAuthenticated = true;
-                document.getElementById('adminLogin').style.display = 'none';
-                document.getElementById('adminContent').classList.add('authenticated');
-                document.getElementById('adminPassword').value = '';
-                
-                // Update stats when entering admin
-                updateAdminStats();
-            } else {
-                alert('Senha incorreta! 🔒');
-                document.getElementById('adminPassword').value = '';
-                document.getElementById('adminPassword').focus();
-            }
-        }
-
-        function logoutAdmin() {
-            if (confirm('Deseja realmente sair do painel administrativo?')) {
-                isAdminAuthenticated = false;
-                document.getElementById('adminLogin').style.display = 'block';
-                document.getElementById('adminContent').classList.remove('authenticated');
-                
-                // Switch back to testimonials tab
-                switchTab('testimonials');
-                document.querySelector('.tab-button').classList.add('active');
-            }
-        }
-
-        // Allow Enter key to authenticate
-        document.addEventListener('DOMContentLoaded', function() {
-            const passwordInput = document.getElementById('adminPassword');
-            passwordInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    authenticateAdmin();
-                }
-            });
-        });
-
-        function switchTab(tabName) {
-            // Remove active class from all tabs and contents
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            // Add active to current nav item and section
+            event.target.closest('.nav-item').classList.add('active');
+            document.getElementById(sectionName).classList.add('active');
             
-            // Add active class to clicked tab and corresponding content
-            event.target.classList.add('active');
-            document.getElementById(tabName).classList.add('active');
-            
-            // If switching to admin tab and not authenticated, show login
-            if (tabName === 'admin' && !isAdminAuthenticated) {
+            // Handle admin section
+            if (sectionName === 'admin' && !isAdminAuthenticated) {
                 document.getElementById('adminLogin').style.display = 'block';
                 document.getElementById('adminContent').classList.remove('authenticated');
                 setTimeout(() => {
@@ -571,7 +693,134 @@
             }
         }
 
-        // Admin Functions (only work if authenticated)
+        // Admin Authentication
+        function authenticateAdmin() {
+            const password = document.getElementById('adminPassword').value;
+            
+            if (password === ADMIN_PASSWORD) {
+                isAdminAuthenticated = true;
+                document.getElementById('adminLogin').style.display = 'none';
+                document.getElementById('adminContent').classList.add('authenticated');
+                document.getElementById('adminPassword').value = '';
+                updateAdminStats();
+            } else {
+                alert('Senha incorreta! 🔒');
+                document.getElementById('adminPassword').value = '';
+                document.getElementById('adminPassword').focus();
+            }
+        }
+
+        // Handle Enter key press on password input
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('adminPassword').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    authenticateAdmin();
+                }
+            });
+        });
+
+        function logoutAdmin() {
+            if (confirm('Deseja realmente sair do painel administrativo?')) {
+                isAdminAuthenticated = false;
+                document.getElementById('adminLogin').style.display = 'block';
+                document.getElementById('adminContent').classList.remove('authenticated');
+                showSection('testimonials');
+            }
+        }
+
+        // Form Submission
+        document.getElementById('testimonialForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const authorName = document.getElementById('authorName').value;
+            const testimonialText = document.getElementById('testimonialText').value;
+            const rating = document.getElementById('ratingSelect').value;
+            
+            if (!authorName || !testimonialText || !rating) {
+                alert('Por favor, preencha todos os campos! 📝');
+                return;
+            }
+            
+            // Create date string
+            const now = new Date();
+            const dateString = now.toLocaleDateString('pt-BR') + ', ' + now.toLocaleTimeString('pt-BR');
+            
+            // Create stars string
+            const stars = '⭐'.repeat(parseInt(rating));
+            
+            // Add testimonial to grid
+            addTestimonialToGrid(authorName, testimonialText, stars, dateString);
+            
+            // Add testimonial to admin list
+            addTestimonialToAdminList(authorName, stars);
+            
+            // Update admin stats if authenticated
+            if (isAdminAuthenticated) {
+                updateAdminStats();
+            }
+            
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            
+            // Clear form
+            document.getElementById('testimonialForm').reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+            
+            // Scroll to top to see the new testimonial
+            document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        function addTestimonialToGrid(name, text, stars, date) {
+            const grid = document.getElementById('testimonialsGrid');
+            const card = document.createElement('div');
+            card.className = 'testimonial-card';
+            card.setAttribute('data-author', name);
+            
+            card.innerHTML = `
+                <div class="testimonial-text">
+                    ${text}
+                </div>
+                <div class="testimonial-author">
+                    <div>
+                        <div class="author-info">${name}</div>
+                        <div class="testimonial-date">${date}</div>
+                    </div>
+                    <div class="testimonial-stars">${stars}</div>
+                </div>
+            `;
+            
+            // Add to beginning of grid (most recent first)
+            grid.insertBefore(card, grid.firstChild);
+        }
+
+        function addTestimonialToAdminList(name, stars) {
+            const list = document.getElementById('adminTestimonialsList');
+            
+            // Remove "no testimonials" message if it exists
+            const noTestimonialsMsg = list.querySelector('p');
+            if (noTestimonialsMsg) {
+                noTestimonialsMsg.remove();
+            }
+            
+            const item = document.createElement('div');
+            item.className = 'admin-testimonial-item';
+            item.setAttribute('data-author', name);
+            
+            item.innerHTML = `
+                <strong>${name}</strong> - ${stars}
+                <button onclick="deleteTestimonial(this)" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 6px; font-size: 12px; cursor: pointer;">Excluir</button>
+            `;
+            
+            // Add to beginning of list (most recent first)
+            list.insertBefore(item, list.firstChild);
+        }
+
+        // Admin Functions
         function exportTestimonials() {
             if (!isAdminAuthenticated) {
                 alert('Acesso negado! Faça login primeiro. 🔒');
@@ -582,18 +831,19 @@
             let data = "Nome,Depoimento,Avaliação,Data\n";
             
             testimonials.forEach(card => {
-                const text = card.querySelector('.testimonial-text').textContent;
+                const text = card.querySelector('.testimonial-text').textContent.replace(/"/g, '""');
                 const author = card.querySelector('.author-info').textContent;
                 const stars = card.querySelector('.testimonial-stars').textContent.length;
-                const date = card.querySelector('.testimonial-date')?.textContent || 'N/A';
+                const dateEl = card.querySelector('.testimonial-date');
+                const date = dateEl ? dateEl.textContent : 'N/A';
                 data += `"${author}","${text}","${stars}","${date}"\n`;
             });
             
-            const blob = new Blob([data], { type: 'text/csv' });
+            const blob = new Blob([data], { type: 'text/csv;charset=utf-8;' });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'depoimentos.csv';
+            a.download = 'depoimentos_brenda_cozinha_gourmet.csv';
             a.click();
             window.URL.revokeObjectURL(url);
             
@@ -607,8 +857,8 @@
             }
             
             if (confirm('Tem certeza que deseja excluir TODOS os depoimentos? Esta ação não pode ser desfeita!')) {
-                document.querySelector('.testimonials-grid').innerHTML = '';
-                document.getElementById('adminTestimonialsList').innerHTML = '<p style="color: #999; font-style: italic;">Nenhum depoimento encontrado.</p>';
+                document.getElementById('testimonialsGrid').innerHTML = '';
+                document.getElementById('adminTestimonialsList').innerHTML = '<p style="color: #999; font-style: italic; text-align: center; padding: 20px;">Nenhum depoimento encontrado.</p>';
                 updateAdminStats();
                 alert('Todos os depoimentos foram excluídos! 🗑️');
             }
@@ -620,7 +870,7 @@
                 return;
             }
             
-            const grid = document.querySelector('.testimonials-grid');
+            const grid = document.getElementById('testimonialsGrid');
             if (grid.style.display === 'none') {
                 grid.style.display = 'grid';
                 alert('Depoimentos estão agora visíveis! 👁️');
@@ -644,12 +894,16 @@
                 item.remove();
                 
                 // Remove from testimonials grid
-                const testimonials = document.querySelectorAll('.testimonial-card');
-                testimonials.forEach(card => {
-                    if (card.querySelector('.author-info').textContent === authorName) {
-                        card.remove();
-                    }
-                });
+                const testimonialCard = document.querySelector(`.testimonial-card[data-author="${authorName}"]`);
+                if (testimonialCard) {
+                    testimonialCard.remove();
+                }
+                
+                // Check if list is empty and add message
+                const list = document.getElementById('adminTestimonialsList');
+                if (list.children.length === 0) {
+                    list.innerHTML = '<p style="color: #999; font-style: italic; text-align: center; padding: 20px;">Nenhum depoimento encontrado.</p>';
+                }
                 
                 updateAdminStats();
                 alert('Depoimento excluído com sucesso! 🗑️');
@@ -661,15 +915,15 @@
             const total = testimonials.length;
             
             let totalStars = 0;
-            let lastDate = '';
+            let lastDate = 'N/A';
             
             testimonials.forEach(card => {
                 const stars = card.querySelector('.testimonial-stars').textContent.length;
                 totalStars += stars;
                 
                 const dateEl = card.querySelector('.testimonial-date');
-                if (dateEl) {
-                    lastDate = dateEl.textContent;
+                if (dateEl && lastDate === 'N/A') {
+                    lastDate = dateEl.textContent.split(',')[0]; // Get just the date part
                 }
             });
             
@@ -677,91 +931,12 @@
             
             document.getElementById('totalCount').textContent = total;
             document.getElementById('averageRating').textContent = average;
-            document.getElementById('lastTestimonial').textContent = lastDate || 'N/A';
+            document.getElementById('lastTestimonial').textContent = lastDate;
         }
 
-        function addToAdminList(name, rating) {
-            const adminList = document.getElementById('adminTestimonialsList');
-            
-            // Remove "no testimonials" message if exists
-            const noTestimonials = adminList.querySelector('p');
-            if (noTestimonials) {
-                noTestimonials.remove();
-            }
-            
-            const item = document.createElement('div');
-            item.className = 'admin-testimonial-item';
-            item.innerHTML = `
-                <strong>${name}</strong> - ${'⭐'.repeat(rating)}
-                <button onclick="deleteTestimonial(this)" style="background: #dc3545; color: white; border: none; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 10px; cursor: pointer;">Excluir</button>
-            `;
-            
-            adminList.appendChild(item);
-        }
-
-        // Handle form submission
-        document.getElementById('testimonialForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = this.querySelector('input[type="text"]').value;
-            const experience = this.querySelector('textarea').value;
-            const rating = this.querySelector('select').value;
-            
-            if (name && experience && rating) {
-                // Create stars string
-                const stars = '⭐'.repeat(parseInt(rating));
-                
-                // Create new testimonial card
-                const testimonialCard = document.createElement('div');
-                testimonialCard.className = 'testimonial-card';
-                testimonialCard.style.animation = 'fadeIn 0.5s ease';
-                
-                const currentDate = new Date().toLocaleString('pt-BR');
-                
-                testimonialCard.innerHTML = `
-                    <div class="testimonial-text">${experience}</div>
-                    <div class="testimonial-author">
-                        <div>
-                            <div class="author-info">${name}</div>
-                            <div class="testimonial-date">${currentDate}</div>
-                        </div>
-                        <div class="testimonial-stars">${stars}</div>
-                    </div>
-                `;
-                
-                // Add to testimonials grid
-                document.querySelector('.testimonials-grid').appendChild(testimonialCard);
-                
-                // Add to admin list
-                addToAdminList(name, parseInt(rating));
-                
-                // Update admin stats
-                updateAdminStats();
-                
-                // Reset form
-                this.reset();
-                
-                // Switch to testimonials tab
-                switchTab('testimonials');
-                document.querySelector('.tab-button').classList.add('active');
-                
-                // Show success message
-                alert('Obrigado pelo seu depoimento! ✨');
-            }
-        });
-
-        // Add hover effects to testimonial cards
+        // Initialize stats on page load
         document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.testimonial-card');
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
+            updateAdminStats();
         });
     </script>
 </body>
