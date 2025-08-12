@@ -196,13 +196,21 @@
             min-width: 120px;
         }
         
-        /* Ajuste só para mobile */
         @media (max-width: 480px) {
-        .nav-text {
-        font-size: 12px;  /* texto menor */
-        padding: 4px 8px; /* botões mais compactos */
-        }
-     }
+    .nav-text {
+        font-size: 11px;        /* texto menor */
+        padding: 2px 4px;       /* menos espaço interno */
+    }
+
+    .nav-item {
+        flex: 1;                /* divide igualmente o espaço */
+        min-width: auto;        /* remove largura mínima forçada */
+    }
+
+    .bottom-nav {
+        height: 50px;           /* barra inferior mais baixa */
+    }
+}
 
         .nav-item:hover {
             background: rgba(255, 255, 255, 0.2);
