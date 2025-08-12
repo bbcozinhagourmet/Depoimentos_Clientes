@@ -1,93 +1,550 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Depoimentos - Brenda Gourmet</title>
-    <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👩‍🍳 Depoimentos - Brenda Cozinha Gourmet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <header>
-        <h1>🍽️ Depoimentos - Brenda Gourmet</h1>
-    </header>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #d4a574 0%, #8b4513 50%, #cd853f 100%);
+            min-height: 100vh;
+            color: #333;
+        }
 
-    <main>
-        <!-- Sessão de Depoimentos -->
-        <div id="testimonials" class="content-section active">
-            <div class="section-title">
-                O que nossos clientes dizem
-            </div>
-            
-            <div class="testimonials-grid" id="testimonialsGrid">
-                <div class="testimonial-card" data-author="Everton Assis">
-                    <div class="testimonial-text">
-                        Os cookies mais gostosos que já comi! 🍪 A massa estava perfeita e o recheio derretia na boca. Voltarei sempre!
-                    </div>
-                    <div class="testimonial-author">
-                        <div>
-                            <div class="author-info">Everton Assis</div>
-                            <div class="testimonial-date">06/08/2025, 20:06:53</div>
-                        </div>
-                        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                    </div>
-                </div>
-            </div>   
-        </div>
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 120px; /* Space for footer */
+        }
 
-        <!-- Formulário para novo depoimento -->
-        <div class="form-section">
-            <h2>Deixe seu depoimento</h2>
-            <input type="text" id="nome" placeholder="Seu nome" />
-            <textarea id="depoimento" placeholder="Escreva seu depoimento"></textarea>
-            <select id="avaliacao">
-                <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
-                <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
-                <option value="⭐⭐⭐">⭐⭐⭐</option>
-                <option value="⭐⭐">⭐⭐</option>
-                <option value="⭐">⭐</option>
-            </select>
-            <button id="btnSalvar">Enviar</button>
-        </div>
-    </main>
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
 
-    <script>
-        // Salvar depoimento no site
-        document.getElementById("btnSalvar").addEventListener("click", () => {
-            const nome = document.getElementById("nome").value.trim();
-            const mensagem = document.getElementById("depoimento").value.trim();
-            const avaliacao = document.getElementById("avaliacao").value;
+        .brand-section {
+            margin-bottom: 20px;
+        }
 
-            if (!nome || !mensagem) {
-                alert("Preencha todos os campos!");
-                return;
+        .brand-logo {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+
+        .brand-name {
+            color: #8b4513;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .brand-tagline {
+            color: #d4a574;
+            font-size: 18px;
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        .header-description {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: #8b4513;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-align: center;
+        }
+
+        /* Testimonials Grid */
+        .testimonials-grid {
+            display: grid;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #faf7f2 0%, #f5f0e8 100%);
+            border-radius: 18px;
+            padding: 25px;
+            border-left: 5px solid #d4a574;
+            position: relative;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.1);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.2);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 70px;
+            color: #d4a574;
+            position: absolute;
+            left: -18px;
+            top: -25px;
+            opacity: 0.4;
+            font-family: serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .author-info {
+            font-weight: 600;
+            color: #8b4513;
+            font-size: 15px;
+        }
+
+        .testimonial-stars {
+            color: #ffd700;
+            font-size: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-date {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        /* Footer Navigation */
+        .footer-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.95) 0%, rgba(205, 133, 63, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px 0;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+            gap: 50px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 15px 25px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 16px;
+            min-width: 120px;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .nav-item.active {
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-icon {
+            font-size: 32px;
+        }
+
+        .nav-text {
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Content sections */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        /* Form Styles */
+        .form-section {
+            background: linear-gradient(135deg, #faf7f2 0%, #f5f0e8 100%);
+            border-radius: 18px;
+            padding: 25px;
+            border-left: 5px solid #d4a574;
+        }
+
+        .form-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            color: #8b4513;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-input, .form-textarea, .rating-select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e8dcc0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-input:focus, .form-textarea:focus, .rating-select:focus {
+            outline: none;
+            border-color: #d4a574;
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .rating-section {
+            margin-bottom: 20px;
+        }
+
+        .rating-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #8b4513;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #d4a574 0%, #8b4513 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(139, 69, 19, 0.3);
+        }
+
+        /* Success Message */
+        .success-message {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            color: #155724;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 1px solid #c3e6cb;
+            display: none;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                padding-bottom: 120px;
             }
 
-            const dataAtual = new Date();
-            const dataFormatada = dataAtual.toLocaleDateString("pt-BR") + ", " + dataAtual.toLocaleTimeString("pt-BR");
+            .brand-name {
+                font-size: 24px;
+            }
 
-            const novoCard = document.createElement("div");
-            novoCard.classList.add("testimonial-card");
-            novoCard.setAttribute("data-author", nome);
+            .brand-logo {
+                font-size: 48px;
+            }
 
-            novoCard.innerHTML = `
-                <div class="testimonial-text">${mensagem}</div>
+            .nav-container {
+                padding: 0 15px;
+                gap: 30px;
+            }
+
+            .nav-item {
+                padding: 12px 20px;
+                min-width: 100px;
+            }
+
+            .nav-icon {
+                font-size: 28px;
+            }
+
+            .nav-text {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="brand-section">
+                <div class="brand-logo">👩‍🍳</div>
+                <div class="brand-name">Brenda Cozinha Gourmet</div>
+                <div class="brand-tagline">"Sabores que encantam, momentos que ficam"</div>
+            </div>
+            <div class="header-description">
+                Descubra o que nossos clientes dizem sobre nossa culinária artesanal. 
+                Cada prato é preparado com amor, ingredientes selecionados e técnicas gourmets 
+                que transformam cada refeição em uma experiência inesquecível.
+            </div>
+        </div>
+    </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Testimonials Section -->
+            <div id="testimonials" class="content-section active">
+                <div class="section-title">
+                    🍽️ O que nossos clientes dizem
+                </div>
+                    
+                    <div class="testimonial-card" data-author="Everton Assis">
+                        <div class="testimonial-text">
+                            Os cookies mais gostosos que já comi! 🍪 A massa estava perfeita e o recheio derretia na boca. Voltarei sempre!
+                        </div>
+                        <div class="testimonial-author">
+                            <div>
+                                <div class="author-info">Everton Assis</div>
+                                <div class="testimonial-date">06/08/2025, 20:06:53</div>
+                            </div>
+                            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Section -->
+            <div id="form" class="content-section">
+                <div class="section-title">
+                    ✨ Compartilhe sua experiência
+                </div>
+                
+                <div class="form-section">
+                    <div class="form-title">
+                        🥘 Conte como foi sua experiência
+                    </div>
+
+                    <div class="success-message" id="successMessage">
+                        ✅ Obrigada pelo seu depoimento! Ele foi adicionado com sucesso e já aparece na lista de avaliações.
+                    </div>
+
+                    <form id="testimonialForm">
+                        <div class="form-group">
+                            <input type="text" id="authorName" class="form-input" placeholder="Seu nome" required>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea id="testimonialText" class="form-textarea" placeholder="Como foi sua experiência com nossos pratos e serviços?" required></textarea>
+                        </div>
+
+                        <div class="rating-section">
+                            <label class="rating-label">Sua avaliação:</label>
+                            <select id="ratingSelect" class="rating-select" required>
+                                <option value="">Selecione uma avaliação</option>
+                                <option value="5">⭐⭐⭐⭐⭐ Excepcional</option>
+                                <option value="4">⭐⭐⭐⭐ Muito Bom</option>
+                                <option value="3">⭐⭐⭐ Bom</option>
+                                <option value="2">⭐⭐ Regular</option>
+                                <option value="1">⭐ Precisa Melhorar</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            🍴 Enviar Depoimento
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Navigation -->
+    <div class="footer-nav">
+        <div class="nav-container">
+            <button class="nav-item active" onclick="showSection('testimonials')">
+                <div class="nav-icon">🍽️</div>
+                <div class="nav-text">Ver Depoimentos</div>
+            </button>
+            <button class="nav-item" onclick="showSection('form')">
+                <div class="nav-icon">✨</div>
+                <div class="nav-text">Deixar Avaliação</div>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Navigation
+        function showSection(sectionName) {
+            // Remove active from all nav items and sections
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+            
+            // Add active to current nav item and section
+            event.target.closest('.nav-item').classList.add('active');
+            document.getElementById(sectionName).classList.add('active');
+        }
+
+        // Form Submission
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('testimonialForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const authorName = document.getElementById('authorName').value;
+                const testimonialText = document.getElementById('testimonialText').value;
+                const rating = document.getElementById('ratingSelect').value;
+                
+                if (!authorName || !testimonialText || !rating) {
+                    alert('Por favor, preencha todos os campos! 📝');
+                    return;
+                }
+                
+                // Create date string
+                const now = new Date();
+                const dateString = now.toLocaleDateString('pt-BR') + ', ' + now.toLocaleTimeString('pt-BR');
+                
+                // Create stars string
+                const stars = '⭐'.repeat(parseInt(rating));
+                
+                // Add testimonial to grid
+                addTestimonialToGrid(authorName, testimonialText, stars, dateString);
+                
+                // Show success message
+                const successMessage = document.getElementById('successMessage');
+                successMessage.style.display = 'block';
+                
+                // Clear form
+                document.getElementById('testimonialForm').reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+                
+                // Scroll to top to see the new testimonial
+                document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        function addTestimonialToGrid(name, text, stars, date) {
+            const grid = document.getElementById('testimonialsGrid');
+            const card = document.createElement('div');
+            card.className = 'testimonial-card';
+            card.setAttribute('data-author', name);
+            
+            card.innerHTML = `
+                <div class="testimonial-text">
+                    ${text}
+                </div>
                 <div class="testimonial-author">
                     <div>
-                        <div class="author-info">${nome}</div>
-                        <div class="testimonial-date">${dataFormatada}</div>
+                        <div class="author-info">${name}</div>
+                        <div class="testimonial-date">${date}</div>
                     </div>
-                    <div class="testimonial-stars">${avaliacao}</div>
+                    <div class="testimonial-stars">${stars}</div>
                 </div>
             `;
-
-            const grid = document.getElementById("testimonialsGrid");
-            grid.insertBefore(novoCard, grid.firstChild);
-
-            document.getElementById("nome").value = "";
-            document.getElementById("depoimento").value = "";
-        });
+            
+            // Add to beginning of grid (most recent first)
+            grid.insertBefore(card, grid.firstChild);
+        }
     </script>
-
-</body>
+</body>                                
 </html>
